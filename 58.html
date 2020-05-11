@@ -1,0 +1,159 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 58: Good Neighbors</title>
+</head>
+<body>
+ <h1>58: Good Neighbors</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 10 cmds<br />
+   Speed: 175 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 20 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 14 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if NW == "a datacube" or
+   **|    N == "a datacube" or
+   **|    NE == "a datacube" or
+   **|    SE == "a datacube" or
+   **|    S == "a datacube" or
+   **|    SW == "a datacube"
+   02|| pickUp H
+   03| step NW, N, NE, E, SE, S, SW, S
+   04| drop
+   05| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step W
+   02| if W == "a wall"
+   03|| step E
+   04|| step E
+   05|| step E
+   06|| "mem 1" = nearest "datacube"
+   07|| if "mem 1" == "5"
+   08||| step E
+   09||| step E
+   10||| step E
+   11||| step E
+   12||| step E
+   13||| step E
+   14||| step NE
+   15||| "mem 1" = nearest "datacube"
+   16||| if "mem 1" == "3"
+   17|||| step S
+   18|||| step S
+   19|||| jump jmp04
+   20||| else
+   21|||| step S
+   22|||| jump jmp08
+   23|| else
+   24||| if H != "a datacube"
+   25|||| step E
+   26|||| step E
+   27|||| step E
+   28|||| step E
+   29|||| step E
+   30|||| if S == "a datacube"
+   31||||| step S
+   32||||| step S
+   33||||| step S
+   34||||| jump jmp03
+   35|||| else
+   36||||| step N
+   37||||| step N
+   38||||| step N
+   39||||| jump jmp07
+   40| step S
+   41| if S == "a wall"
+   42|| step N
+   43|| step NE
+   44|| if N == "5"
+   45||| if NW == "3" or
+   **|||    NE == "3"
+   46|||| step N
+   47|||| step N
+   48|||| step N
+   49|||| if W == "5"
+   50||||| step N
+   51||||| jump jmp02
+   52|||| else
+   53||||| step W
+   54||||| step W
+   55||||| step W
+   56||||| jump jmp06
+   57||| else
+   58|||| step NW
+   59|||| step N
+   60|||| step N
+   61|||| if W == "5"
+   62||||| jump jmp05
+   63|||| else
+   64||||| step N
+   65||||| jump jmp01
+   66| end
+   **| jmp01:
+   **| jmp02:
+   **| jmp03:
+   **| jmp04:
+   67| pickUp H
+   68| step N
+   69| step N
+   70| step N
+   71| drop
+   72| step S
+   73| pickUp S
+   74| step N
+   75| step N
+   76| drop
+   77| step S
+   78| pickUp S
+   79| step N
+   80| step N
+   81| drop
+   82| end
+   **| jmp05:
+   **| jmp06:
+   **| jmp07:
+   **| jmp08:
+   83| pickUp H
+   84| step S
+   85| step S
+   86| step S
+   87| drop
+   88| step N
+   89| pickUp N
+   90| step S
+   91| step S
+   92| drop
+   93| step N
+   94| pickUp N
+   95| step S
+   96| step S
+   97| drop
+  </pre>
+  The size solution comes from the realization that stripes work and that the program won't end if workers keep picking up datacubes, so the E and W (or N and S or NE and SW or NW and SE) options are removed from the "if" statement, which wraps the "pickUp" command. The speed solution comes from isolating workers and telling them exactly what to do. It is certainly not the optimal solution, but I opted for greater code reuse, since it certainly is good enough to beat the 20 secs goal.
+ </p>
+</body>
+</html>

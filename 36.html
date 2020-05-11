@@ -1,0 +1,238 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 36: Seek and Destroy 2</title>
+</head>
+<body>
+ <h1>36: Seek and Destroy 2</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 10 cmds<br />
+   Speed: 145 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 69 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 60 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 1" = nearest "shredder"
+   **| jmp01:
+   02| step N
+   03| if H < "mem 2" or
+   **|    "mem 2" != "a datacube" and
+   **|    H == "a datacube"
+   04|| "mem 2" = set H
+   05| if N == "a wall"
+   06|| pickUp "mem 2"
+   07|| giveTo "mem 1"
+   08| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = nearest "shredder"
+   02| step N
+   03| step N
+   04| if H == "a datacube"
+   05|| if N == "a datacube"
+   **||| jmp01:
+   06||| "mem 2" = set H
+   07||| "mem 3" = set N
+   08||| if "mem 3" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 3" == "a datacube"
+   09|||| "mem 4" = set "mem 2"
+   10|||| "mem 2" = set "mem 3"
+   11|||| "mem 3" = set "mem 4"
+   12||| step N
+   13||| "mem 4" = set N
+   14||| if "mem 4" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+   15|||| "mem 3" = set "mem 2"
+   16|||| "mem 2" = set "mem 4"
+   17||| else
+   18|||| if "mem 4" < "mem 3" or
+   **||||    "mem 3" != "a datacube" and
+   **||||    "mem 4" == "a datacube"
+   19||||| "mem 3" = set "mem 4"
+   20||| step N
+   21||| "mem 4" = set N
+   22||| if "mem 4" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+   23|||| "mem 3" = set "mem 2"
+   24|||| "mem 2" = set "mem 4"
+   25||| else
+   26|||| if "mem 4" < "mem 3" or
+   **||||    "mem 3" != "a datacube" and
+   **||||    "mem 4" == "a datacube"
+   27||||| "mem 3" = set "mem 4"
+   28||| step N
+   29||| "mem 4" = set N
+   30||| if "mem 4" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+   31|||| "mem 3" = set "mem 2"
+   32|||| "mem 2" = set "mem 4"
+   33||| else
+   34|||| if "mem 4" < "mem 3" or
+   **||||    "mem 3" != "a datacube" and
+   **||||    "mem 4" == "a datacube"
+   35||||| "mem 3" = set "mem 4"
+   36||| step N
+   37||| step N
+   38||| step N
+   39||| step N
+   40||| "mem 4" = set N
+   41||| if "mem 4" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+   42|||| "mem 3" = set "mem 2"
+   43|||| "mem 2" = set "mem 4"
+   44||| else
+   45|||| if "mem 4" < "mem 3" or
+   **||||    "mem 3" != "a datacube" and
+   **||||    "mem 4" == "a datacube"
+   46||||| "mem 3 = set "mem 4"
+   47||| pickUp "mem 2"
+   48||| giveTo "mem 1"
+   49||| pickUp "mem 3"
+   50||| giveTo "mem 1"
+   51||| step N
+   52||| step N
+   53||| jump jmp01
+   54|| else
+   **||| jmp02:
+   55||| "mem 2" = set H
+   56||| step N
+   57||| "mem 3" = set N
+   58||| if "mem 3" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 3" == "a datacube"
+   59|||| "mem 2" = set "mem 3"
+   60||| step N
+   61||| step N
+   62||| "mem 3" = set N
+   63||| if "mem 3" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 3" == "a datacube"
+   64|||| "mem 2" = set "mem 3"
+   65||| step N
+   66||| step N
+   67||| "mem 3" = set N
+   68||| if "mem 3" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 3" == "a datacube"
+   69|||| "mem 2" = set "mem 3"
+   70||| step N
+   71||| step N
+   72||| "mem 3" = set N
+   73||| if "mem 3" < "mem 2" or
+   **|||    "mem 2" != "a datacube" and
+   **|||    "mem 3" == "a datacube"
+   74|||| "mem 2" = set "mem 3"
+   75||| pickUp "mem 2"
+   76||| giveTo "mem 1"
+   77||| step N
+   78||| step N
+   79||| jump jmp02
+   80| else
+   **|| jmp03:
+   81|| step N
+   82|| "mem 2" = set H
+   83|| "mem 3" = set N
+   84|| if "mem 3" < "mem 2" or
+   **||    "mem 2" != "a datacube" and
+   **||    "mem 3" == "a datacube
+   85||| "mem 4" = set "mem 2"
+   86||| "mem 2" = set "mem 3"
+   87||| "mem 3" = set "mem 4"
+   88|| step N
+   89|| "mem 4" = set N
+   90|| if "mem 4" < "mem 2" or
+   **||    "mem 2" != "a datacube" and
+   **||    "mem 4" == "a datacube"
+   91||| "mem 3" = set "mem 2"
+   92||| "mem 2" = set "mem 4"
+   93|| else
+   94||| if "mem 4" < "mem 3" or
+   **|||    "mem 3" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+   95|||| "mem 3" = set "mem 4"
+   96|| step N
+   97|| "mem 4" = set N
+   98|| if "mem 4" < "mem 2" or
+   **||    "mem 2" != "a datacube" and
+   **||    "mem 4" == "a datacube"
+   99||| "mem 3" = set "mem 2"
+  100||| "mem 2" = set "mem 4"
+  101|| else
+  102||| if "mem 4" < "mem 3" or
+   **|||    "mem 3" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+  103|||| "mem 3" = set "mem 4"
+  104|| step N
+  105|| "mem 4" = set N
+  106|| if "mem 4" < "mem 2" or
+   **||    "mem 2" != "a datacube" and
+   **||    "mem 4" == "a datacube"
+  107||| "mem 3" = set "mem 2"
+  108||| "mem 2" = set "mem 4"
+  109|| else
+  110||| if "mem 4" < "mem 3" or
+   **|||    "mem 3" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+  111|||| "mem 3" = set "mem 4"
+  112|| step N
+  113|| "mem 4" = set N
+  114|| if "mem 4" < "mem 2" or
+   **||    "mem 2" != "a datacube" and
+   **||    "mem 4" == "a datacube"
+  115||| "mem 3" = set "mem 2"
+  116||| "mem 2" = set "mem 4"
+  117|| else
+  118||| if "mem 4" < "mem 3" or
+   **|||    "mem 3" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+  119|||| "mem 3" = set "mem 4"
+  120|| step N
+  121|| "mem 4" = set N
+  122|| if "mem 4" < "mem 2" or
+   **||    "mem 2" != "a datacube" and
+   **||    "mem 4" == "a datacube"
+  123||| "mem 3" = set "mem 2"
+  124||| "mem 2" = set "mem 4"
+  125|| else
+  126||| if "mem 4" < "mem 3" or
+   **|||    "mem 3" != "a datacube" and
+   **|||    "mem 4" == "a datacube"
+  127|||| "mem 3" = set "mem 4"
+  128|| pickUp "mem 2"
+  129|| giveTo "mem 1"
+  130|| pickUp "mem 3"
+  131|| giveTo "mem 1"
+  132|| step N
+  133|| step N
+  134|| jump jmp03
+  </pre>
+  The size solution is very simple: just add a jump to the previous ("Seek and Destroy 1") solution. The speed solution, however, is quite difficult. It requires various optimizations, such as isolating individual workers. However, maximum program length is an issue, so the focus must remain on the two workers who have to travel the farthest, while similarities in other workers can lead to code reuse. Memory location use is maximized with "mem 2" containing the smallest and "mem 3" the next smallest datacubes in each pass, cutting the number of iterations in half (rounding up).
+ </p>
+</body>
+</html>

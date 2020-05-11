@@ -1,0 +1,99 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 26: Budget Brigade 2</title>
+</head>
+<body>
+ <h1>26: Budget Brigade 2</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 10 cmds<br />
+   Speed: 70 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 67 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 67 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if "my item" >= "50" or
+   **|    S == "a printer" or
+   **|    S == "a worker" and
+   **|    S != "a shredder"
+   02|| giveTo E
+   03|| takeFrom S
+   04| if "my item" < "50"
+   05|| giveTo W
+   06| if "my item" == "a datacube" and
+   **|    S == "a shredder"
+   07|| giveTo S
+   08| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if S == "a printer"
+   **|| jmp01:
+   02|| takeFrom S
+   03|| giveTo N
+   04|| jump jmp01
+   05| if N == "a worker" and
+   **|    NW != "a worker"
+   **|| jmp02:
+   06|| if "my item" == "a datacube"
+   07||| giveTo N
+   08|| jump jmp02
+   09| if N == "a worker" and
+   **|    NW == "a worker"
+   **|| jmp03:
+   10|| if "my item" == "a datacube" and
+   **||    "my item" >= "50"
+   11||| giveTo NW
+   12|| if "my item" == "a datacube" and
+   **||    "my item" >= 50
+   13||| giveTo NE
+   14|| jump jmp03
+   15| if W == "a worker" or
+   **|    E == "a worker" and
+   **|    S != "a shredder"
+   **|| jmp04:
+   16|| if "my item" == "a datacube" and
+   **||    "my item" < "50"
+   17||| giveTo W
+   **||| jmp05:
+   18||| if "my item" == "a datacube"
+   19|||| giveTo W
+   20||| jump jmp05
+   21|| if "my item" == "a datacube" and
+   **||    "my item" >= "50"
+   22||| giveTo E
+   **||| jmp06:
+   23||| if "my item" == "a datacube"
+   24|||| giveTo E
+   25||| jump jmp06
+   26|| jump jmp04
+   **| jmp07:
+   27| if "my item" == "a datacube"
+   28|| giveTo S
+   29| jump jmp07
+  </pre>
+  Again, the size solution is built from finding which operations you need and wrapping them in the right conditions. The speed solution employs subtlety found from trial and error.
+ </p>
+</body>
+</html>

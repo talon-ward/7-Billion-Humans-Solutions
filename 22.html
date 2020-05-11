@@ -1,0 +1,65 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 22: Number Royale</title>
+</head>
+<body>
+ <h1>22: Number Royale</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 3<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 6 cmds<br />
+   Speed: 11 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 7 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 4 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| if W == "nothing" and
+   **|    SW == "nothing" and
+   **|    S == "nothing" and
+   **|    E == "a wall" or
+   **|    W > "my item" or
+   **|    E > "my item" or
+   **|    N == "a worker"
+   03|| step S
+   04| step E
+   05| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step S
+   02| step S
+   03| pickUp N
+   **| jmp01:
+   04| if W > "my item" or
+   **|    E > "my item" or 
+   **|    "my item" < "90"
+   05|| step S
+   06| step E
+   07| step E
+   08| jump jmp01
+  </pre>
+  Both the size and speed solutions are considered "hacks," as they do not produce the correct solution in all cases; they are just likely to produce the best solution. In the speed case, the number "90" may need to be adjusted in combination with getting lucky test data.
+ </p>
+</body>
+</html>

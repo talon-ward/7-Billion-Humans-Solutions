@@ -1,0 +1,56 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 29: Biometric Access</title>
+</head>
+<body>
+ <h1>29: Biometric Access</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 5 cmds<br />
+   Speed: 61 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 58 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 58 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 2" = nearest "shredder"
+   **| jmp01:
+   02| "mem 1" = nearest "datacube"
+   03| pickUp "mem 1"
+   04| giveTo "mem 2"
+   05| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 2" = nearest "shredder"
+   **| jmp01:
+   02| "mem 1" = nearest "datacube"
+   03| pickUp "mem 1"
+   04| giveTo "mem 2"
+   05| step N
+   06| step N
+   07| jump jmp01
+  </pre>
+  The size solution is immediate, but the worker pathing interactions that result in the speed solution are not at all obvious.
+ </p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 67: Decimal Doubler</title>
+</head>
+<body>
+ <h1>67: Decimal Doubler</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 25 cmds<br />
+   Speed: 250 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 21 cmds<br />
+   Speed: 50 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 21 cmds<br />
+   Speed: 49 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| step S
+   02| pickUp H
+   **| jmp01:
+   03| step S
+   04| if H == "button"
+   05|| step N
+   06|| tell W "Ok!"
+   07|| listen "Go!"
+   08|| jump jmp01
+   **| jmp02:
+   09| drop
+   10| if W != "a worker"
+   11|| tell "everyone" "Go!"
+   12| listen "Ok!"
+   13| tell W "Ok!"
+   14| "mem 2" = calc E / "5"
+   15| "mem 1" = calc H x "2"
+   16| if "mem 1" > "9"
+   17|| "mem 1" = calc "mem 1" - "10"
+   18| "mem 1" = calc "mem 1" + "mem 2"
+   19| pickUp H
+   20| write "mem 1"
+   21| jump jmp02
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step S
+   02| if H == "a datacube"
+   03|| pickUp H
+   04|| "mem 1" = set "my item"
+   05|| step S
+   06|| drop
+   07|| "mem 2" = set E
+   **|| jmp01:
+   08|| if "mem 1" >= "5" and
+   **||    "mem 1" < "8" or
+   **||    "mem 1" < "3"
+   09||| if "mem 1" == "0" or
+   **|||    "mem 1" == "5"
+   10|||| if "mem 2" >= "5"
+   11||||| "mem 3" = set "1"
+   12|||| else
+   13||||| "mem 3" = set "0"
+   14||| else
+   15|||| if "mem 1" == "1" or
+   **||||    "mem 1" == "6"
+   16||||| if "mem 2" >= "5"
+   17|||||| "mem 3" = set "3"
+   18||||| else
+   19|||||| "mem 3" = set "2"
+   20|||| else
+   21||||| if "mem 2" >= "5"
+   22|||||| "mem 3" = set "5"
+   23||||| else
+   24|||||| "mem 3" = set "4"
+   25|| else
+   26||| if "mem 1" == "3" or
+   **|||    "mem 1" == "8"
+   27|||| if "mem 2" >= "5"
+   28||||| "mem 3" = set "7"
+   29|||| else
+   30||||| "mem 3" = set "6"
+   31||| else
+   32|||| if "mem 2" >= "5"
+   33||||| "mem 3" = set "9"
+   34|||| else
+   35||||| "mem 3" = set "8"
+   36|| pickUp H
+   37|| write "mem 3"
+   38|| drop
+   39|| jump jmp01
+   40| else
+   **|| jmp02:
+   41|| tell "everyone" "Hi!"
+   42|| tell "everyone" "Hi!"
+   43|| step S
+   44|| "mem 1" = set "0"
+   45|| "mem 1" = set "0"
+   46|| step N
+   47|| jump jmp02
+
+  </pre>
+  The key insight for the size solution is that the carry digit can be computed in a single "calc" operation by taking the value of the adjacent digit and dividing by 5. The speed solution converts the "calc" operations into a binary tree. It might have some room to be made faster.
+ </p>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 52: The Mode Code</title>
+</head>
+<body>
+ <h1>52: The Mode Code</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 3<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 24 cmds<br />
+   Speed: 158 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 19 cmds<br />
+   Speed: 77 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 18 cmds<br />
+   Speed: 77 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 1" = nearest "datacube"
+   **| jmp01:
+   02| step E
+   03| if H == "a datacube" and
+   **|    H == "mem 3"
+   04|| "mem 2" = calc "mem 2" + "1"
+   05| if E != "a datacube"
+   06|| step NW
+   07|| if N == "a wall"
+   08||| pickUp "mem 1"
+   09||| write "mem 2"
+   10||| drop
+   11||| "mem 2" = set "0"
+   12||| "mem 3" = calc "mem 3" + "1"
+   13||| step E
+   14||| "mem 1" = nearest "datacube"
+   **|| jmp02:
+   15|| step W
+   16|| if W != "a hole" and
+   **||    W != "a wall"
+   17||| jump jmp02
+   18| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = set "0"
+   02| "mem 2" = set "5"
+   **| jmp01:
+   03| if W != "a worker" or
+   **|    E != "a worker"
+   04|| step S
+   05|| if "mem 1" == "2"
+   06||| if E == "a worker"
+   07|||| "mem 2" = set "mem 1"
+   08|| else
+   09||| if NE == "a worker"
+   10|||| "mem 2" = set "mem 1"
+   11|| jump jmp02
+   12| if "mem 1" == "0"
+   13|| "mem 1" = set "1"
+   14|| "mem 2" = set "4"
+   15| else
+   16|| "mem 1" = set "2"
+   17|| "mem 2" = set "3"
+   18| jump jmp01
+   **| jmp02:
+   19| "mem 1" = nearest "datacube"
+   20| step NW
+   21| step N
+   **| jmp03:
+   22| if NW == "a datacube"
+   23|| step W
+   24|| jump jmp03
+   25| step N
+   **| jmp04:
+   **| jmp05:
+   26| "mem 4" = nearest "datacube"
+   27| if "mem 2" == "mem 4"
+   28|| if "mem 3" < "16"
+   29||| if "mem 3" < "8"
+   30|||| if "mem 3" < "4"
+   31||||| if "mem 3" < "2"
+   32|||||| if "mem 3" == "0"
+   33||||||| "mem 3" = set "1"
+   34|||||| else
+   35||||||| "mem 3" = set "2"
+   36||||| else
+   37|||||| if "mem 3" == "2"
+   38||||||| "mem 3" = set "3"
+   39|||||| else
+   40||||||| "mem 3" = set "4"
+   41|||| else
+   42||||| if "mem 3" < "6"
+   43|||||| if "mem 3" == "4"
+   44||||||| "mem 3" = set "5"
+   45|||||| else
+   46||||||| "mem 3" = set "6"
+   47||||| else
+   48|||||| if "mem 3" == "6"
+   49||||||| "mem 3" = set "7"
+   50|||||| else
+   51||||||| "mem 3" = set "8"
+   52||| else
+   53|||| if "mem 3" < "12"
+   54||||| if "mem 3" < "10"
+   55|||||| if "mem 3" == "8"
+   56||||||| "mem 3" = set "9"
+   57|||||| else
+   58||||||| "mem 3" = set "10"
+   59||||| else
+   60|||||| if "mem 3" == "10"
+   61||||||| "mem 3" = set "11"
+   62|||||| else
+   63||||||| "mem 3" = set "12"
+   64|||| else
+   65||||| if "mem 3" < "14"
+   66|||||| if "mem 3" == "12"
+   67||||||| "mem 3" = set "13"
+   68|||||| else
+   69||||||| "mem 3" = set "14"
+   70||||| else
+   71|||||| if "mem 3" == "14"
+   72||||||| "mem 3" = set "15"
+   73|||||| else
+   74||||||| "mem 3" = set "16"
+   75|| else
+   76||| "mem 3" = calc "mem 3" + "1"
+   77| if E == "a datacube"
+   78|| step E
+   79| jump jmp05
+   80| step N
+   **| jmp06:
+   81| "mem 4" = nearest "datacube"
+   82| if "mem 2" == "mem 4"
+   83|| if "mem 3" < "16"
+   84||| if "mem 3" < "8"
+   85|||| if "mem 3" < "4"
+   86||||| if "mem 3" < "2"
+   87|||||| if "mem 3" == "0"
+   88||||||| "mem 3" = set "1"
+   89|||||| else
+   90||||||| "mem 3" = set "2"
+   91||||| else
+   92|||||| if "mem 3" == "2"
+   93||||||| "mem 3" = set "3"
+   94|||||| else
+   95||||||| "mem 3" = set "4"
+   96|||| else
+   97||||| if "mem 3" < "6"
+   98|||||| if "mem 3" == "4"
+   99||||||| "mem 3" = set "5"
+  100|||||| else
+  101||||||| "mem 3" = set "6"
+  102||||| else
+  103|||||| if "mem 3" == "6"
+  104||||||| "mem 3" = set "7"
+  105|||||| else
+  106||||||| "mem 3" = set "8"
+  107||| else
+  108|||| if "mem 3" < "12"
+  109||||| if "mem 3" < "10"
+  110|||||| if "mem 3" == "8"
+  111||||||| "mem 3" = set "9"
+  112|||||| else
+  113||||||| "mem 3" = set "10"
+  114||||| else
+  115|||||| if "mem 3" == "10"
+  116||||||| "mem 3" = set "11"
+  117|||||| else
+  118||||||| "mem 3" = set "12"
+  119|||| else
+  120||||| if "mem 3" < "14"
+  121|||||| if "mem 3" == "12"
+  122||||||| "mem 3" = set "13"
+  123|||||| else
+  124||||||| "mem 3" = set "14"
+  125||||| else
+  126|||||| if "mem 3" == "14"
+  127||||||| "mem 3" = set "15"
+  128|||||| else
+  129||||||| "mem 3" = set "16"
+  130|| else
+  131||| "mem 3" = calc "mem 3" + "1"
+  132| if W == "a datacube"
+  133|| step W
+  134|| jump jmp06
+  135| step N
+  136| if N != "a wall"
+  137|| jump jmp04
+  138| pickUp "mem 1"
+  139| write "mem 3"
+  140| drop
+  </pre>
+  The size solution is a "hack" only because it sometimes takes too long and times out. The key is to count one number at a time, return to write the number, and then shift the return location one square. The wrong numbers will eventually all get overwritten. The speed solution could be a lot faster except it's constrained by maximum program length. This constraint prevents loop unrolling and forces an extra environment check at each step. The greatest improvement comes from replacing "calc" operations with a binary tree.
+ </p>
+</body>
+</html>

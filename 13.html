@@ -1,0 +1,109 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 13: Injection Sites 2</title>
+</head>
+<body>
+ <h1>13: Injection Sites 2</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 10 cmds<br />
+   Speed: 55 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 9 cmds<br />
+   Speed: 5 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 7 cmds<br />
+   Speed: 5 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| if S == "a datacube" and
+   **|    SE == "nothing" or
+   **|    W == "a worker"
+   03|| step E
+   04| step S
+   05| if W == "a datacube" and
+   **|    H == "nothing"
+   06|| drop
+   07| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp S
+   02| if W != "a worker"
+   03|| step SE
+   04|| step SE
+   05|| step SE
+   06|| step SE
+   07|| step SE
+   08|| step S
+   09|| step S
+   10|| step S
+   11|| step S
+   12|| jump jmp05
+   13| if E != "a worker"
+   14|| step SE
+   15|| step SE
+   16|| step S
+   17|| step S
+   18|| step S
+   19|| step S
+   20|| step S
+   21|| step S
+   22|| step S
+   23|| jump jmp04
+   24| if E != "a worker"
+   25|| step SE
+   26|| step SE
+   27|| step SE
+   28|| step SE
+   29|| step SE
+   30|| step S
+   31|| step S
+   32|| jump jmp03
+   33| if W != "a worker"
+   34|| step SW
+   35|| step S
+   36|| step S
+   37|| step S
+   38|| step S
+   39|| jump jmp02
+   40| if W != "a worker"
+   41|| step S
+   42|| step S
+   43|| step S
+   44|| step S
+   45|| step S
+   46|| jump jmp01
+   47| step SE
+   48| step SE
+   49| step SE
+   50| step E
+   **| jmp01:
+   **| jmp02:
+   **| jmp03:
+   **| jmp04:
+   **| jmp05:
+   51| drop
+  </pre>
+  The speed solution is very straightforward. The size solution is based on the realization that the workers need only move right or down and then uses various little optimizations. In particular, every destination is below the diagonal emanating from each worker, so we can simply step down every iteration without condition.
+ </p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 11: Injection Sites 1</title>
+</head>
+<body>
+ <h1>11: Injection Sites 1</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 5 cmds<br />
+   Speed: 7 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 5 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 5 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| step S
+   03| if W != "a datacube" or
+   **|    H != "nothing"
+   04|| jump jmp01
+   05| drop
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp S
+   02| step S
+   03| step S
+   04| step S
+   05| step S
+   06| step SW
+   07| if SW == "nothing" or
+   **|    E == "a wall"
+   08|| if SW == "nothing"
+   09||| step SW
+   10|| else
+   11||| step NW
+   12|| jump jmp02:
+   13| step SW
+   14| step S
+   15| step S
+   16| if H == "nothing"
+   17|| jump jmp01:
+   18| step S
+   19| step S
+   **| jump01:
+   **| jump02:
+   20| drop
+  </pre>
+  The size solution is obvious. The speed solution relies on realizing the fourth worker from the left must travel the greatest distance and needs to minimum number of checks. He makes two checks because moving far enough down to be able to make only one check would change which worker travels the most distance, making the program take longer.
+ </p>
+</body>
+</html>

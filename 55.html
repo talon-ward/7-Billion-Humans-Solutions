@@ -1,0 +1,78 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 55: Data Flowers</title>
+</head>
+<body>
+ <h1>55: Data Flowers</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 8 cmds<br />
+   Speed: 25 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 21 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 20 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| step N
+   03| if H != "nothing" or
+   **|    S != "a datacube"
+   04|| jump jmp01
+   05| forEachDir NW, N, NE, E, SE, S, SW, W as "mem 2"
+   06|| "mem 1" = calc "mem 1" + "mem 2"
+   07| write "mem 1"
+   08| drop
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp S
+   02| step N
+   03| if NW == "a datacube" and
+   **|    NE == "nothing"
+   04|| jump jmp01
+   05| if N == "nothing" and
+   **|    NW == "a datacube"
+   06|| jump jmp02
+   07| if NW == "nothing" and
+   **|    NE == "nothing"
+   08|| jump jmp03
+   09| jump jmp04
+   10| step N
+   **| jmp01:
+   11| step N
+   12| step N
+   13| step N
+   **| jmp02:
+   14| step N
+   **| jmp03:
+   15| step N
+   16| step N
+   17| forEachDir NW, N, NE, E, SE, S, SW, W as "mem 2"
+   18|| "mem 1" = calc "mem 1" + "mem 2"
+   19| write "mem 1"
+   20| drop
+  </pre>
+  The size solution just needs to know when you're in the center of a datacube flower. The speed solution isolates the workers, making sure the worker with the longest path has the fewest "if" checks.
+ </p>
+</body>
+</html>

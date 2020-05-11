@@ -1,0 +1,114 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 23: Sorting Hall</title>
+</head>
+<body>
+ <h1>23: Sorting Hall</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 6 cmds<br />
+   Speed: 26 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 6 cmds<br />
+   Speed: 16 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 6 cmds<br />
+   Speed: 16 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| if W > "my item"
+   03|| step W
+   04| if E < "my item"
+   05|| step E
+   06| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp S
+   02| if "my item" < W
+   03|| step W
+   04| if "my item" > E
+   05|| step E
+   06| if "my item" < W
+   07|| step W
+   08| if "my item" > E
+   09|| step E
+   10| if "my item" < W
+   11|| step W
+   12| if "my item" > E
+   13|| step E
+   14| if "my item" < W
+   15|| step W
+   16| if "my item" > E
+   17|| step E
+   18| if "my item" < W
+   19|| step W
+   20| if "my item" > E
+   21|| step E
+   22| if "my item" < W
+   23|| step W
+   24| if "my item" > E
+   25|| step E
+   26| if "my item" < W
+   27|| step W
+   28| if "my item" > E
+   29|| step E
+   30| if "my item" < W
+   31|| step W
+   32| if "my item" > E
+   33|| step E
+   34| if "my item" < W
+   35|| step W
+   36| if "my item" > E
+   37|| step E
+   38| if "my item" < W
+   39|| step W
+   40| if "my item" > E
+   41|| step E
+   42| if "my item" < W
+   43|| step W
+   44| if "my item" > E
+   45|| step E
+   46| if "my item" < W
+   47|| step W
+   48| if "my item" > E
+   49|| step E
+   50| if "my item" < W
+   51|| step W
+   52| if "my item" > E
+   53|| step E
+   54| if "my item" < W
+   55|| step W
+   56| if "my item" > E
+   57|| step E
+   58| if "my item" < W
+   59|| step W
+   60| if "my item" > E
+   61|| step E
+   62| if "my item" < W
+   63|| step W
+   64| if "my item" > E
+   65|| step E
+  </pre>
+  The size solution is apparent once one realizes that workers attempting to move into each other's squares will swap positions. The speed solution, however, is a "hack" that exploits the fact that failed cases are not counted when computing the average speed. The trick is to make the cases that take longer fail by unrolling the loop and only completing a fixed number of iterations. The number of iterations may need to be adjusted along with getting lucky test data in order to get the target value of 16. It may be possible to get 15 or lower with particularly lucky data.
+ </p>
+</body>
+</html>

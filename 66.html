@@ -1,0 +1,148 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 66: Decimal Counter</title>
+</head>
+<body>
+ <h1>66: Decimal Counter</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 23 cmds<br />
+   Speed: 120 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 19 cmds<br />
+   Speed: 46 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 19 cmds<br />
+   Speed: 43 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| step S
+   02| pickUp H
+   **| jmp01:
+   03| step S
+   04| if H == "button"
+   05|| step N
+   06|| tell W "Ok!"
+   07|| listen "Go!"
+   08|| jump jmp01
+   **| jmp02:
+   09| drop
+   10| listen "Ok!"
+   11| pickUp H
+   12| "mem 1" = calc "my item" + "1"
+   13| if "mem 1" >= "10"
+   14|| write "0"
+   15|| tell W "Ok!"
+   16| else
+   17|| write "mem 1"
+   18|| tell "everyone" "Go!"
+   19 jump jmp02
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step S
+   02| pickUp H
+   **| jmp01:
+   03| step S
+   04| if H == "button"
+   05|| step N
+   06|| "mem 2" = set "0"
+   07|| "mem 2" = set "0"
+   08|| "mem 2" = set "0"
+   09|| "mem 2" = set "0"
+   10|| "mem 2" = set "0"
+   11|| "mem 2" = set "0"
+   12|| step N
+   13|| step S
+   14|| jump jmp01
+   15| else
+   16|| "mem 1" = set "my item"
+   17|| drop
+   18|| if "mem 1" == "1"
+   **||| jmp02:
+   19||| pickUp H
+   20||| write "2"
+   21||| drop
+   22||| pickUp H
+   23||| write "3"
+   24||| drop
+   25||| pickUp H
+   26||| write "4"
+   27||| drop
+   28||| pickUp H
+   29||| write "5"
+   30||| drop
+   31||| pickUp H
+   32||| write "6"
+   33||| drop
+   34||| pickUp H
+   35||| write "7"
+   36||| drop
+   37||| pickUp H
+   38||| write "8"
+   39||| drop
+   40||| pickUp H
+   41||| write "9"
+   42||| drop
+   43||| pickUp H
+   44||| write "0"
+   45||| drop
+   46||| pickUp H
+   47||| write "1"
+   48||| drop
+   49||| jump jmp02
+   50|| if "mem 1" == "8" or
+   **||    "mem 1" == "0" or
+   **||    "mem 1" == "9"
+   51||| "mem 2" = calc "0" + "0"
+   52||| "mem 2" = calc "0" + "0"
+   53||| "mem 2" = calc "0" + "0"
+   54||| "mem 2" = calc "0" + "0"
+   55||| "mem 2" = calc "0" + "0"
+   56||| "mem 2" = calc "0" + "0"
+   57||| "mem 2" = calc "0" + "0"
+   58||| "mem 2" = calc "0" + "0"
+   59||| if "mem 1" == "8"
+   60|||| pickUp H
+   61|||| write "9"
+   62|||| drop
+   63||| else
+   64|||| "mem 2" = calc "0" + "0"
+   65||| "mem 2" = calc "0" + "0"
+   66||| "mem 2" = calc "0" + "0"
+   67||| "mem 2" = calc "0" + "0"
+   68||| "mem 2" = calc "0" + "0"
+   69||| "mem 2" = calc "0" + "0"
+   70||| "mem 2" = calc "0" + "0"
+   71||| "mem 2" = calc "0" + "0"
+   72||| "mem 2" = calc "0" + "0"
+   73||| "mem 2" = calc "0" + "0"
+   74||| if "mem 1" == "0"
+   75|||| pickUp H
+   76|||| write "1"
+   77|||| drop
+   78||| else
+   79|||| pickUp H
+   80|||| write "0"
+   81|||| drop
+  </pre>
+  The size solution is fairly straightforward, just implementing the standard addition algorithm using standard optimizations and synchronizing with "listen" and "tell" commands. The speed solution is "hacky" in that it uses fine-tuned timing. Since the ones digit worker is busy the entire time with no delays, this solution should be incredibly close to the theoretical optimal.
+ </p>
+</body>
+</html>

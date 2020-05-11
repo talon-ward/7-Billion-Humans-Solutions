@@ -1,0 +1,123 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 37: Dangerous Spreadsheeting</title>
+</head>
+<body>
+ <h1>37: Dangerous Spreadsheeting</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 13 cmds<br />
+   Speed: 32 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 13 cmds<br />
+   Speed: 16 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 13 cmds<br />
+   Speed: 16 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if E == "a hole"
+   02|| step NE
+   03|| if SE == "a hole"
+   04||| step E
+   05|| step SE
+   06| else
+   07|| step E
+   08| if E != "a wall"
+   09|| "mem 1" = calc H + "mem 1"
+   10|| jump jmp01
+   11| pickUp H
+   12| write "mem 1"
+   13| drop
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if W == "a wall"
+   02|| step E
+   03|| step E
+   04|| "mem 1" = set H
+   05|| if E == "a hole"
+   06||| step SE
+   07||| step NE
+   08||| "mem 1" = calc "mem 1" + H
+   09||| step E
+   10||| "mem 1" = calc "mem 1" + H
+   11||| step E
+   12||| "mem 1" = calc "mem 1" + H
+   13||| step E
+   14||| step E
+   15||| jump jmp05
+   16|| step E
+   17|| "mem 1" = calc "mem 1" + H
+   18|| step E
+   19|| "mem 1" = calc "mem 1" + H
+   20|| step E
+   21|| if H == "nothing"
+   22||| step E
+   23||| jump jmp01
+   24|| "mem 1" = calc "mem 1" + H
+   25|| step E
+   26|| jump jmp02
+   27| else
+   28|| step E
+   29|| "mem 1" = set H
+   30|| step E
+   31|| if E == "a hole"
+   32||| step NE
+   33||| step SE
+   34||| "mem 1" = calc "mem 1" + H
+   35||| step E
+   36||| "mem 1" = calc "mem 1" + H
+   37||| step NE
+   38||| step SE
+   39||| jump jmp04
+   40|| if S == "a hole"
+   41||| "mem 1" = calc "mem 1" + H
+   42||| step E
+   43||| step E
+   44||| "mem 1" = calc "mem 1" + H
+   45||| step SE
+   46||| step E
+   47||| step NE
+   48||| jump jmp03
+   49|| step E
+   50|| "mem 1" = calc "mem 1" + H
+   51|| step NE
+   52|| step SE
+   **|| jmp01:
+   53|| "mem 1" = calc "mem 1" + H
+   **|| jmp02:
+   54|| step E
+   55|| "mem 1" = calc "mem 1" + H
+   56|| step E
+   **| jmp03:
+   **| jmp04:
+   **| jmp05:
+   57| "mem 1" = calc "mem 1" + H
+   58| step E
+   59| step E
+   60| pickUp H
+   61| write "mem 1"
+   62| drop
+  </pre>
+  The size solution is fairly obvious; you just need to step around the holes. The speed solution is just loop unrolling and isolating specific workers.
+ </p>
+</body>
+</html>

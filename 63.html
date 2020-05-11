@@ -1,0 +1,132 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 63: Defrag Disordered</title>
+</head>
+<body>
+ <h1>63: Defrag Disordered</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 3<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 28 cmds<br />
+   Speed: 95 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 19 cmds<br />
+   Speed: 8 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 16 cmds<br />
+   Speed: 8 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   **| jmp02:
+   01| if N != "a hole"
+   02|| step N
+   03|| jump jmp02
+   **| jmp03:
+   **| jmp04:
+   04| if W != "a hole"
+   05|| step W
+   06|| jump jmp04
+   **| jmp05:
+   07| drop
+   08| if H == "a datacube" and
+   **|    "mem 1" == "nothing" and
+   **|    "my item" == "nothing"
+   09|| pickUp H
+   10|| jump jmp01
+   11| "mem 1" = set H
+   12| if E == "a hole"
+   13|| step SW
+   14|| jump jmp03
+   15| step W
+   16| jump jmp05
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if W == "nothing" and
+   **|    E == "nothing"
+   02|| step N
+   03|| if N == "a datacube"
+   04||| pickUp N
+   05||| step NE
+   06||| step NE
+   07||| step NE
+   08||| step N
+   09||| step N
+   10||| step N
+   11||| drop
+   12||| step S
+   13||| step S
+   14||| pickUp S
+   15||| step W
+   16||| step W
+   17||| drop
+   18|| else
+   19||| pickUp NE
+   20||| step N
+   21||| step N
+   22||| step N
+   23||| step N
+   24||| step N
+   25||| step N
+   26||| drop
+   27||| step SW
+   28||| step SW
+   29||| pickUp S
+   30||| step NE
+   31||| step E
+   32||| drop
+   33| else
+   34|| if W == "a hole"
+   35||| step NE
+   36||| step N
+   35||| pickUp H
+   38||| step N
+   39||| step N
+   40||| step N
+   41||| drop
+   42||| step SE
+   43||| pickUp S
+   44||| step N
+   45||| step N
+   46||| drop
+   47||| step SW
+   48||| pickUp S
+   49||| step NW
+   50||| drop
+   51|| else
+   52||| step NE
+   53||| step NE
+   54||| step NE
+   55||| pickUp H
+   56||| step NE
+   57||| step NE
+   58||| step NE
+   59||| drop
+   60||| step SW
+   61||| step SW
+   62||| pickUp S
+   63||| step NW
+   64||| step NW
+   65||| step N
+   66||| drop
+  </pre>
+  Like many similar challenges, the size solution relies on moving in the same direction as much as possible and resusing that movement code as much as possible. The speed solution is to just isolate the workers and tell them where to go. Figuring out which to send where doesn't require breaking out the pen and paper; you can just eyeball it.
+ </p>
+</body>
+</html>

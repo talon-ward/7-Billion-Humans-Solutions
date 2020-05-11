@@ -1,0 +1,273 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 57: Neighborly Sweeper</title>
+</head>
+<body>
+ <h1>57: Neighborly Sweeper</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 16 cmds<br />
+   Speed: 100 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 9 cmds<br />
+   Speed: 15 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 9 cmds<br />
+   Speed: 15 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| step NW, N, NE, E, SE, S, SW, W
+   02| "mem 1" = set "0"
+   03| forEachDir NW, N, NE, E, SE, S, SW, W
+   04|| if "mem 2" == "a datacube"
+   05||| "mem 1" = calc "mem 1" + "1"
+   06| pickUp H
+   07| write "mem 1"
+   08| drop
+   09| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if W == "a wall"
+   02|| step E
+   03|| step E
+   04|| if SE == "a datacube"
+   05||| if NE == "nothing" and
+   **|||    E == "nothing"
+   06|||| pickUp H
+   07|||| write "1"
+   08|||| drop
+   09|||| step E
+   10|||| step E
+   11|||| pickUp H
+   12|||| write "2"
+   13|||| drop
+   14|||| step E
+   15|||| step E
+   16|||| step E
+   17|||| pickUp H
+   18|||| write "3"
+   19|||| drop
+   20|||| step E
+   21|||| pickUp H
+   22|||| write "4"
+   23|||| drop
+   24||| else
+   25|||| if E == "a datacube"
+   26||||| pickUp H
+   27||||| write "2"
+   28||||| drop
+   29||||| step E
+   30||||| pickUp H
+   31||||| write "2"
+   32||||| drop
+   33||||| step S
+   34||||| pickUp H
+   35||||| write "3"
+   36||||| drop
+   37||||| step E
+   38||||| step E
+   39||||| step E
+   40||||| pickUp H
+   41||||| write "2"
+   42||||| drop
+   43||||| step E
+   44||||| pickUp H
+   45||||| write "3"
+   46||||| drop
+   47|||| else
+   48||||| step S
+   49||||| pickUp H
+   50||||| write "1"
+   51||||| drop
+   52||||| step E
+   53||||| pickUp H
+   54||||| write "3"
+   55||||| drop
+   56||||| step E
+   57||||| pickUp H
+   58||||| write "4"
+   59||||| drop
+   60||||| step N
+   61||||| pickUp H
+   62||||| write "4"
+   63||||| drop
+   64||||| step E
+   65||||| pickUp H
+   66||||| write "4"
+   67||||| drop
+   68|| else
+   69||| if N == "nothing"
+   70|||| pickUp H
+   71|||| write "1"
+   72|||| drop
+   73|||| step NE
+   74|||| pickUp H
+   75|||| write "3"
+   76|||| drop
+   77|||| step E
+   78|||| step E
+   79|||| pickUp H
+   80|||| write "2"
+   81|||| drop
+   82|||| step E
+   83|||| pickUp H
+   84|||| write "3"
+   85|||| drop
+   86|||| step E
+   87|||| pickUp H
+   88|||| write "3"
+   89|||| drop
+   90||| else
+   91|||| step SE
+   92|||| step E
+   93|||| pickUp H
+   94|||| write "2"
+   95|||| drop
+   96|||| step E
+   97|||| pickUp H
+   98|||| write "3"
+   99|||| drop
+  100|||| step N
+  101|||| pickUp H
+  102|||| write "5"
+  103|||| drop
+  104|||| step E
+  105|||| pickUp H
+  106|||| write "4"
+  107|||| drop
+  108|||| step N
+  109|||| pickUp H
+  110|||| write "4"
+  111|||| drop
+  112| else
+  113|| step W
+  114|| step W
+  115|| if N == "a datacube"
+  116||| if NW == "nothing"
+  117|||| if SW == "nothing"
+  118||||| step N
+  119||||| pickUp H
+  120||||| write "1"
+  121||||| drop
+  122||||| step SW
+  123||||| pickUp H
+  124||||| write "4"
+  125||||| drop
+  126||||| step SW
+  127||||| pickUp H
+  128||||| write "4"
+  129||||| drop
+  130||||| step N
+  131||||| pickUp H
+  132||||| write "4"
+  133||||| drop
+  134||||| step N
+  135||||| pickUp H
+  136||||| write "3"
+  137||||| drop
+  138|||| else
+  139||||| pickUp H
+  140||||| write "4"
+  141||||| drop
+  142||||| step W
+  143||||| pickUp H
+  144||||| write "6"
+  145||||| drop
+  146||||| step W
+  147||||| pickUp H
+  148||||| write "5"
+  149||||| drop
+  150||||| step S
+  151||||| pickUp H
+  152||||| write "7"
+  153||||| drop
+  154||||| step E
+  155||||| pickUp H
+  156||||| write "8"
+  157||||| drop
+  158||||| step E
+  159||||| pickUp H
+  160||||| write "5"
+  161||||| drop
+  162||| else
+  163|||| pickUp H
+  164|||| write "3"
+  165|||| drop
+  166|||| step W
+  167|||| pickUp H
+  168|||| write "5"
+  169|||| drop
+  170|||| step W
+  171|||| pickUp H
+  172|||| write "5"
+  173|||| drop
+  174|||| step W
+  175|||| pickUp H
+  176|||| write "4"
+  177|||| drop
+  178|||| step W
+  179|||| pickUp H
+  180|||| write "4"
+  181|||| drop
+  182|||| step NE
+  183|||| pickUp H
+  184|||| write "6"
+  185|||| drop
+  186|| else
+  187||| if S == "a datacube"
+  188|||| pickUp H
+  189|||| write "2"
+  190|||| drop
+  191|||| step S
+  192|||| pickUp H
+  193|||| write "4"
+  194|||| drop
+  195|||| step NW
+  196|||| pickUp H
+  197|||| write "4"
+  198|||| drop
+  199|||| step W
+  200|||| pickUp H
+  201|||| write "3"
+  202|||| drop
+  203|||| step SW
+  204|||| pickUp H
+  205|||| write "4"
+  206|||| drop
+  207|||| step NW
+  208|||| pickUp H
+  209|||| write "1"
+  210|||| drop
+  211||| else
+  212|||| step W
+  213|||| step W
+  214|||| pickUp H
+  215|||| write "1"
+  216|||| drop
+  217|||| step W
+  218|||| pickUp H
+  219|||| write "1"
+  220|||| drop
+  </pre>
+  The size challenge is somewhat "hacky" in that it sometimes times out, but it's the obvious choice. The speed challenge is isolating the workers and explicitly telling each one what to do. It's a little tricky in that the paths of the workers are determined by the geometry of the board, but it's fairly obvious once you count the number of squares and divide by the number of workers to find out a worker should complete at most six datacubes.
+ </p>
+</body>
+</html>

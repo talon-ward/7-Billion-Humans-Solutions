@@ -1,0 +1,73 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 50: Cubical Communication</title>
+</head>
+<body>
+ <h1>50: Cubical Communication</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 12 cmds<br />
+   Speed: 60 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 28 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 28 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 2" = nearest "printer"
+   **| jmp01:
+   02| takeFrom "mem 2"
+   03| if SW == "mem 3"
+   04|| giveTo SW
+   05| "mem 3" = calc "mem 3" + "1"
+   06| if "mem 3" > 4
+   07|| "mem 3" = calc "mem 3" - "4"
+   08| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = nearest "datacube"
+   02| "mem 2" = nearest "shredder"
+   03| takeFrom S
+   04| if "mem 1" == "1"
+   05|| jump jmp04
+   06| if "mem 1" == "2"
+   07|| jump jmp03
+   08| if "mem 1" == "3"
+   09|| jump jmp01
+   10| tell "everyone" "Hi!"
+   11| tell "everyone" "Hi!"
+   **| jmp01:
+   **| jmp02:
+   12| tell "everyone" "Hi!"
+   13| tell "everyone" "Hi!"
+   **| jmp03:
+   14| tell "everyone" "Hi!"
+   15| tell "everyone" "Hi!"
+   **| jmp04:
+   16| giveTo "mem 2"
+   17| takeFrom SW
+   18| jump jmp02
+  </pre>
+  The size solution is just counting. The speed solution just requires finding commands that take just as long as "giveTo" (with a movement) and "takeFrom." I count this as a difficulty 2, since you have to test the commands to find their speeds.
+ </p>
+</body>
+</html>

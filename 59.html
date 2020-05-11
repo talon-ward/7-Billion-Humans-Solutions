@@ -1,0 +1,101 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 59: Glory Hole</title>
+</head>
+<body>
+ <h1>59: Glory Hole</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 3<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 7 cmds<br />
+   Speed: 15 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 6 cmds<br />
+   Speed: 8 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 8 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| forEachDir NW, N, NE, E, SE, S, SW, W as "mem 1"
+   02|| "mem 2" = calc H - "mem 1"
+   03|| if H != "a datacube" and
+   **||    "mem 1" == "a datacube" or
+   **||    "mem 2" == "1"
+   04||| step "mem 1"
+   05||| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = nearest "datacube"
+   02| if "mem 1" > "9"
+   03|| if E == "a wall"
+   04||| step SW
+   05||| if "mem 1" == "12"
+   06|||| step S
+   07||| if "mem 1" >= "11"
+   08|||| step S
+   09||| jump jmp02
+   10|| else
+   11||| step E
+   12||| if "mem 1" == "12"
+   13|||| step S
+   14||| else
+   15|||| step SE
+   16||| step S
+   17||| step S
+   18||| jump jmp03
+   19|| "mem 1" = nearest "datacube"
+   20| else
+   21|| step "mem 1"
+   **| jmp01:
+   22| forEachDir NW, N, NE, E, SE, S, SW, W as "mem 2"
+   23|| if "mem 2" < "mem 1"
+   24||| step "mem 2"
+   25||| "mem 1" = set "mem 2"
+   26||| if "mem 1" == "1"
+   27|||| "mem 1" = nearest "hole"
+   28|||| step "mem 1"
+   29||| jump jmp01
+   **| jmp02:
+   30| step WW
+   31| step W
+   32| step W
+   33| step W
+   34| step W
+   35| step W
+   36| step NW
+   37| step NW
+   38| step NW
+   39| step N
+   **| jmp03:
+   40| step SW
+   41| step W
+   42| step NW
+   43| step NW
+   44| step NW
+   45| step NW
+   46| step W
+   47| step W
+   48| step W
+  </pre>
+  Apparently the size challenge is a bit sneaky, but where you need to go depends only on the difference between the next datacube and the current datacube. Of course, a hole counts as a zero when taking the difference. For the speed challenge, the bottleneck is obviously the group of workers who are farthest away. These workers are isolated and their paths prescribed, while the remaining workers simply use a generic algorithm. The distant workers are broken into two groups to keep the hole in use as much as possible.
+ </p>
+</body>
+</html>

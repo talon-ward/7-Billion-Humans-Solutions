@@ -1,0 +1,197 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 65: Defrag Ordered</title>
+</head>
+<body>
+ <h1>65: Defrag Ordered</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 25 cmds<br />
+   Speed: 500 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 18 cmds<br />
+   Speed: 15 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 18 cmds<br />
+   Speed: 15 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   **| jmp02:
+   01| "mem 1" = set H
+   02| if W != "a hole"
+   03|| step W
+   04| else
+   05|| if N == "a hole"
+   **||| jmp03:
+   06||| step S
+   07||| if S != "a hole"
+   08|||| jump jmp03
+   09||| jump jmp02
+   10|| step NE
+   **| jmp04:
+   11|| step E
+   12|| if E != "a hole"
+   13||| jump jmp04
+   14| if H == "nothing" and
+   **|    "my item" == "a datacube" and
+   **|    W != "nothing"
+   15|| drop
+   16| if H == "nothing" and
+   **|    "mem 1" == "a datacube" and
+   **|    "my item" != "a datacube"
+   17|| pickUp "mem 1"
+   18| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if W != "a worker"
+   02|| if E != "a worker"
+   03||| step NE
+   04||| pickUp NW
+   05||| step NE
+   06||| step NE
+   07||| step N
+   08||| step N
+   09||| drop
+   10||| step NE
+   11||| step E
+   12||| pickUp SE
+   13||| drop
+   14||| step W
+   15||| pickUp SE
+   16||| drop
+   17||| step SE
+   18||| step S
+   19||| step S
+   20||| pickUp S
+   21||| step N
+   22||| step NE
+   23||| drop
+   24||| step SW
+   25||| step S
+   26||| pickUp SW
+   27||| step N
+   28||| step N
+   29||| drop
+   30||| step SW
+   31||| pickUp S
+   32||| step W
+   33||| step NW
+   34||| drop
+   35|| else
+   36||| step N
+   37||| step NW
+   38||| step N
+   39||| pickUp NW
+   40||| step NE
+   41||| step NE
+   42||| step NE
+   43||| step E
+   44||| step E
+   45||| drop
+   46||| pickUp N
+   47||| step NW
+   48||| step W
+   49||| step W
+   50||| drop
+   51||| pickUp SW
+   52||| step E
+   53||| step E
+   54||| drop
+   55||| step SW
+   56||| step W
+   57||| pickUp SE
+   58||| drop
+   59||| step W
+   60||| pickUp S
+   61||| drop
+   62||| step W
+   63||| pickUp S
+   64||| drop
+   65||| step W
+   66||| pickUp SW
+   67||| drop
+   68| else
+   69|| if E == "a worker"
+   70||| step N
+   71||| step N
+   72||| step NE
+   73||| pickUp NE
+   74||| step NW
+   75||| step NW
+   76||| step W
+   77||| step W
+   78||| drop
+   79||| step NE
+   80||| step NE
+   81||| pickUp E
+   82||| drop
+   83||| pickUp SE
+   84||| step E
+   85||| step E
+   86||| step E
+   87||| step E
+   88||| drop
+   89||| step SW
+   90||| step SW
+   91||| step SW
+   92||| step W
+   93||| step W
+   94||| pickUp S
+   95||| step N
+   96||| drop
+   97||| pickUp SE
+   98||| step W
+   99||| step W
+  100||| drop
+  101|| else
+  102||| step N
+  103||| step N
+  104||| step N
+  105||| step N
+  106||| step N
+  107||| step N
+  108||| pickUp E
+  109||| step W
+  110||| step W
+  111||| step W
+  112||| step W
+  113||| step W
+  114||| drop
+  115||| pickUp E
+  116||| step NE
+  117||| step E
+  118||| step E
+  119||| step E
+  120||| step E
+  121||| drop
+  122||| step SW
+  123||| step S
+  124||| step S
+  125||| step S
+  126||| pickUp SW
+  127||| step N
+  128||| step NE
+  129||| drop
+  </pre>
+  The size solution uses the same principles are previous problems. The speed solution is simply isolating the workers. However, knowing where to tell them to go is a hard problem, in the technical sense. Without careful planning, you may end up with a 16 secs solution, instead of a 15 secs one.
+ </p>
+</body>
+</html>

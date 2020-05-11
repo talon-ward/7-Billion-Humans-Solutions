@@ -1,0 +1,136 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 64: Binary Counter</title>
+</head>
+<body>
+ <h1>64: Binary Counter</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 3<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 17 cmds<br />
+   Speed: 54 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 14 cmds<br />
+   Speed: 11 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 13 cmds<br />
+   Speed: 11 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if H == "a button"
+   02|| step N
+   03| if H != "a sensor" and
+   **|    H != "a button"
+   04|| step S
+   **| jmp02:
+   05| if E == "a sensor" and
+   **|    E != "a datacube" or
+   **|    E != "a worker"   and
+   **|    H == "a sensor"
+   06|| jump jmp02
+   **| jmp03:
+   07| if E != "a sensor" and
+   **|    E != "a worker" or
+   **|    E == "a datacube" and
+   **|    H == "a sensor"
+   08|| jump jmp03
+   09| if S == "a sensor" or
+   **|    H == "a sensor" and
+   **|    "my item" != "a datacube"
+   10|| pickUp H
+   11| else
+   12|| drop
+   13| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step S
+   02| step S
+   03| if H == "button"
+   **|| jmp01:
+   04|| step N
+   05|| step S
+   06|| jump jmp01
+   07| pickUp N
+   08| if E != "a sensor"
+   09|| drop
+   10|| pickUp H
+   11|| drop
+   12|| pickUp H
+   13|| "mem 4" = set H
+   14|| drop
+   15|| pickUp H
+   16|| drop
+   17|| pickUp H
+   18|| drop
+   19|| "mem 4" = set H
+   20|| pickUp H
+   21|| drop
+   22|| pickUp H
+   23|| "mem 4" = set H
+   24|| drop
+   25|| pickUp H
+   26|| drop
+   27|| end
+   28| if E == "a datacube"
+   29|| drop
+   30|| "mem 4" = set H
+   31|| pickUp H
+   32|| "mem 4" = set H
+   33|| "mem 4" = set H
+   34|| drop
+   35|| "mem 4" = set H
+   36|| pickUp H
+   37|| "mem 4" = set H
+   38|| "mem 4" = set H
+   39|| drop
+   40|| "mem 4" = set H
+   41|| pickUp H
+   42|| "mem 4" = set H
+   43|| "mem 4" = set H
+   44|| drop
+   45|| end
+   46| if E == "a datacube"
+   47|| "mem 4" = set H
+   48|| drop
+   49|| "mem 4" = set H
+   50|| "mem 4" = set H
+   51|| "mem 4" = set H
+   52|| "mem 4" = set H
+   53|| pickUp H
+   54|| "mem 4" = set H
+   55|| "mem 4" = set H
+   56|| "mem 4" = set H
+   57|| "mem 4" = set H
+   58|| drop
+   59|| ende
+   **| jmp01:
+   60| if E == "a datacube"
+   61|| "mem 4" = set H
+   62|| "mem 4" = set H
+   63|| "mem 4" = set H
+   64|| "mem 4" = set H
+   65|| drop
+   66|| end
+   67| jump jmp01
+  </pre>
+  The key behind the size solution is that a datacube only needs to toggle every other time its neighbor toggles. The speed solution is "hacky" not in the sense that it fails for some inputs but in the sense that the timing was fine-tuned by manually inserting pauses. There is an obvious theoretical bound on speed based on how quickly the one's digit worker can "pickUp" and "drop" their cube. This is faster than a single worker can repeatedly press the button. Since the more significant digits need to be changed much less frequently than the less significant digits, I suspect that the truly optimal time solution involves using more than one worker to press the button at some point.
+ </p>
+</body>
+</html>

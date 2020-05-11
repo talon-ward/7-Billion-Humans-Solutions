@@ -1,0 +1,70 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 9: Dynamic Angles</title>
+</head>
+<body>
+ <h1>9: Dynamic Angles</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 5 cmds<br />
+   Speed: 6 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 3 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 3 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| step S
+   03| if NW != "a datacube"
+   04|| jump jmp01
+   05| drop
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp S
+   02| step S
+   03| step S
+   04| if E == "nothing"
+   05|| step S
+   06|| step S
+   07|| step S
+   08|| step S
+   09| else
+   10|| if E == "nothing"
+   11||| step S
+   12||| step S
+   13||| step S
+   14|| else
+   15||| if E == "nothing"
+   16|||| step S
+   17|||| step S
+   18||| else
+   19|||| if E == "nothing"
+   20||||| step S
+   21| drop
+ 
+  </pre>
+  The size solution is straightforward. The speed solution must realize that the rightmost worker has the greatest distance to traverse and consequently is the limiting agent and must only make one "if" check.
+ </p>
+</body>
+</html>

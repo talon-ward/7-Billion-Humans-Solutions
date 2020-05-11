@@ -1,0 +1,186 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 32: Creative Writhing</title>
+</head>
+<body>
+ <h1>32: Creative Writhing</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 6 cmds<br />
+   Speed: 39 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 31 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 31 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| step NW, N, NE, E, SE, S, SW
+   02| pickUp H
+   03| write "99"
+   04| drop
+   05| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if NW == "a wall"
+   **|| jmp01:
+   02|| step S
+   03|| pickUp H
+   04|| write 99
+   05|| drop
+   06|| step S
+   07|| pickUp H
+   08|| write 99
+   09|| drop
+   10|| step E
+   11|| pickUp H
+   12|| write 99
+   13|| drop
+   14|| step S
+   15|| pickUp H
+   16|| write 99
+   17|| drop
+   18|| step S
+   19|| pickUp H
+   20|| write 99
+   21|| drop
+   22|| step W
+   23|| pickUp H
+   24|| write 99
+   25|| drop
+   26|| jump jmp01
+   27| if SW == "a datacube"
+   **|| jmp02:
+   28|| step S
+   29|| pickUp H
+   30|| write 99
+   31|| drop
+   32|| step W
+   33|| pickUp H
+   34|| write 99
+   35|| drop
+   36|| step S
+   37|| pickUp H
+   38|| write 99
+   39|| drop
+   40|| step S
+   41|| pickUp H
+   42|| write 99
+   43|| drop
+   44|| step E
+   45|| pickUp H
+   46|| write 99
+   47|| drop
+   48|| step S
+   49|| pickUp H
+   50|| write 99
+   51|| drop
+   52|| step S
+   53|| pickUp H
+   54|| write 99
+   55|| drop
+   56|| jump jmp02
+   57| step S
+   58| pickUp H
+   59| write "99"
+   60| drop
+   61| if SW == "a datacube"
+   62|| step S
+   63|| pickUp H
+   64|| write 99
+   65|| drop
+   66|| step W
+   67|| pickUp H
+   68|| write 99
+   69|| drop
+   70|| step S
+   71|| pickUp H
+   72|| write 99
+   73|| drop
+   74|| step S
+   75|| pickUp H
+   76|| write 99
+   77|| drop
+   78|| step E
+   79|| pickUp H
+   80|| write 99
+   81|| drop
+   82|| step S
+   83|| pickUp H
+   84|| write 99
+   85|| drop
+   86|| step S
+   87|| pickUp H
+   88|| write 99
+   89|| drop
+   90|| step W
+   91|| pickUp H
+   92|| write 99
+   93|| drop
+   94|| step S
+   95|| pickUp H
+   96|| write 99
+   97|| drop
+   98|| step S
+   99|| pickUp H
+  100|| write 99
+  101|| drop
+  102|| step S
+  103|| pickUp H
+  104|| write 99
+  105|| drop
+  106| else
+   **|| jmp03:
+  107|| step S
+  108|| pickUp H
+  109|| write 99
+  110|| drop
+  111|| step E
+  112|| pickUp H
+  113|| write 99
+  114|| drop
+  115|| step S
+  116|| pickUp H
+  117|| write 99
+  118|| drop
+  119|| step S
+  120|| pickUp H
+  121|| write 99
+  122|| drop
+  123|| step W
+  124|| pickUp H
+  125|| write 99
+  126|| drop
+  127|| step S
+  128|| pickUp H
+  129|| write 99
+  130|| drop
+  131|| step S
+  132|| pickUp H
+  133|| write 99
+  134|| drop
+  135|| jump jmp03
+  </pre>
+  Both optimizations are elementary; although the speed optimization is long and cumbersome to enter. It could be shortened further by recognizing more symmetries.
+ </p>
+</body>
+</html>

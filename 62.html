@@ -1,0 +1,184 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 62: The Sorting Floor</title>
+</head>
+<body>
+ <h1>62: The Sorting Floor</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 3<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 48 cmds<br />
+   Speed: 174 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 25 cmds<br />
+   Speed: 55 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 23 cmds<br />
+   Speed: 45 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   **| jmp02:
+   **| jmp03:
+   01| if W != "a hole"
+   02|| step W
+   03|| jump jmp03
+   **| jmp04:
+   04| if N != "a hole"
+   05|| step N
+   06|| jump jmp04
+   07| "mem 1" = set "1"
+   **| jmp05:
+   08| if "my item" != "nothing"
+   09|| drop
+   10| if H == "a datacube" and
+   **|    "mem 1" == "a datacube" and
+   **|    "mem 1" > H and
+   **|    "my item" == "nothing"
+   11|| pickUp "mem 1"
+   12| if "mem 1" == "nothing" and
+   **|    H == "a datacube" and
+   **|    "my item" == "nothing"
+   13|| pickUp H
+   14|| jump jmp02
+   15| "mem 1" = set H
+   16| if E == "a hole" and
+   **|    S == "a hole"
+   17|| jump jmp01
+   18| if E != "a hole"
+   19|| step E
+   20| else
+   21|| step SW
+   22|| step W
+   23| jump jmp05
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step N
+   02| step N
+   03| pickUp N
+   04| step S
+   05| step S
+   06| drop
+   07| if S == "a hole"
+   08|| step N
+   09|| step N
+   10|| step N
+   11|| step N
+   12|| pickUp N
+   13|| step S
+   14|| step S
+   15|| drop
+   16| else
+   17|| step N
+   18|| step N
+   19|| step N
+   20|| step N
+   21|| if W == "a worker"
+   22||| pickUp SE
+   23||| step SE
+   24||| step S
+   25||| step S
+   26||| step S
+   27||| drop
+   **| jmp01:
+   **| jmp02:
+   28| if W != "a hole"
+   29|| step W
+   30|| jump jmp02
+   **| jmp03:
+   31| if S != "a hole"
+   32|| step S
+   33|| jump jmp03
+   34| step NE
+   35| "mem 1" = set H
+   36| if "mem 1" != "a datacube"
+   37|| "mem 3" = set "1"
+   38| else
+   39|| "mem 3" = set "0"
+   40| forEachDir NW, N, NE, E, SE, S, SW, W as "mem 2"
+   41|| if "mem 2" < "mem 1" or
+   **||    "mem 1" != "a datacube" and
+   **||    "mem 2" == "a datacube"
+   42||| "mem 1" = set "mem 2"
+   43|| else
+   44||| if "mem 2" != "a datacube"
+   45|||| if "mem 3" < "4"
+   46||||| if "mem 3" < "2"
+   47|||||| if "mem 3" == "0"
+   48||||||| "mem 3" = set "1"
+   49|||||| else
+   50||||||| "mem 3" = set "2"
+   51||||| else
+   52|||||| if "mem 3" == "2"
+   53||||||| "mem 3" = set "3"
+   54|||||| else
+   55||||||| "mem 3" = set "4"
+   56|||| else
+   57||||| if "mem 3" < "6"
+   58|||||| if "mem 3" == "4"
+   59||||||| "mem 3" = set "5"
+   60|||||| else
+   61||||||| "mem 3" = set "6"
+   62||||| else
+   63|||||| if "mem 3" == "6"
+   64||||||| "mem 3" = set "7"
+   65|||||| else
+   66||||||| "mem 3" = set "8"
+   67| pickUp "mem 1"
+   **| jmp04:
+   68| if NW != "a hole"
+   69|| step NW
+   70|| jump jmp04
+   **| jmp05:
+   71| if N != "a hole"
+   72|| step N
+   73|| jump jmp05
+   74| if "mem 3" < "4"
+   75|| if "mem 3" < "2"
+   76||| if "mem 3" == "1"
+   77|||| step E
+   78|| else
+   79||| if "mem 3" == "2"
+   80|||| step E
+   81|||| step E
+   82||| else
+   83|||| step S
+   84| else
+   85|| if "mem 3" < "6"
+   86||| if "mem 3" == "4"
+   87|||| step SE
+   88||| else
+   89|||| step SE
+   90|||| step E
+   91|| else
+   92||| step SE
+   93||| if "mem 3" == "8"
+   94|||| step SE
+   95||| else
+   96|||| if "mem 3" == "6"
+   97||||| step SW
+   98|||| else
+   99||||| step S
+  100| drop
+  101| jump jmp01
+  </pre>
+  The "if" statement around the "drop" command in the size solution is not strictly necessary except that, without it, the program times out. The key to reducing the number of commands is to only scan the board in one direction. The size solution scans from left to right and from top to bottom. If a pair of numbers is out of order, the larger number is picked up and then moved to the next available square, in scanning order. If a worker without a datacube finds a cube after an empty square, it moves that datacube back one square (in scanning order). The speed solution resolves synchronization issues to use all workers by realizing that the position of the datacube can be determined by counting the number of empty spaces while searching for the next smallest cube. There is some variability in execution speed, so you may need to run several trials to get to 45 secs (or possibly lower).
+ </p>
+</body>
+</html>

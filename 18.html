@@ -1,0 +1,60 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 18: Uniquely Disposed</title>
+</head>
+<body>
+ <h1>18: Uniquely Disposed</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 7 cmds<br />
+   Speed: 12 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 7 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 7 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| step SW
+   02| pickUp N
+   **| jmp01:
+   03| giveTo S
+   04| step SE
+   05| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp W
+   02| step SW
+   03| step SE
+   04| step SE
+   05| step SE
+   06| step SE
+   07| step SE
+   08| step SE
+   09| step SE
+   10| step SE
+   11| step SE
+   12| giveTo S
+  </pre>
+  The solutions are elementary. The speed solution relies on the fact that a failed step operation is fast.
+ </p>
+</body>
+</html>

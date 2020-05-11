@@ -1,0 +1,51 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 4: Long Distance Delivery</title>
+</head>
+<body>
+ <h1>4: Long Distance Delivery</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 4 cmds<br />
+   Speed: 7 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 3 cmds<br />
+   Speed: 6 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 3 cmds<br />
+   Speed: 6 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| step E
+   02| pickUp
+   03| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step E
+   02| pickUp
+   **| jmp01:
+   03| step E
+   04| jump jmp01
+  </pre>
+  Since we cannot yet associate a direction with the "pickUp" command, we have separate solutions for size and speed. If your worker is already holding an item, the "pickUp" command will simply fail (with a large time penalty).
+ </p>
+</body>
+</html>

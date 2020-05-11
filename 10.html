@@ -1,0 +1,103 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 10: Emergency Escapades</title>
+</head>
+<body>
+ <h1>10: Emergency Escapades</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 9 cmds<br />
+   Speed: 25 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 7 cmds<br />
+   Speed: 13 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 7 cmds<br />
+   Speed: 13 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if N != "3" and
+   **|    N != "a hole" and
+   **|    S != "1" and
+   **|    S != "a hole" and
+   **|    H == "4" or
+   **|    SW == "4" or
+   **|    H == "1"
+   02|| step N
+   03| if N == "3" or
+   **|    N == "a hole" or
+   **|    S == "1" or
+   **|    S == "a hole" and
+   **|    H == "4" or
+   **|    H == "nothing" and
+   **|    S != "4"
+   04|| step W
+   05| if H == 3
+   06|| step S
+   07| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step W
+   02| step W
+   03| step W
+   04| step W
+   05| if W == "3"
+   06|| jump jmp01
+   07| if H == "1"
+   08|| jump jmp02
+   09| if S == "a wall"
+   10|| if W == "a worker"
+   11||| step NW
+   12||| step N
+   13|| else
+   14||| step E
+   15||| step NW
+   **| jmp03:
+   16| if W != "1"
+   17|| step W
+   18|| jump jmp03
+   19| step W
+   **| jmp02:
+   20| if NW != "a hole"
+   21|| step NW
+   22| else
+   23|| if W != "a hole"
+   24||| step W
+   25|| else
+   26||| step SW
+   **| jump01:
+   27| step SW
+   28| step S
+   29| step SW
+   30| step W
+   31| step W
+   32| step W
+   33| step NW
+   34| step N
+   35| step N
+   36| step N
+   37| step N
+   38| step NW
+  </pre>
+  The size solution is simply finding the right "if" conditions for each of the necessary directions a worker must travel. The speed solution involves two parts: (1) getting through the bottleneck and (2) proceeding to the correct hole after the bottleneck. The key point in the speed solution is get as many workers through the bottleneck square as possible, minimizing any downtime when no worker is actively stepping onto the bottleneck square.
+ </p>
+</body>
+</html>

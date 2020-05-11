@@ -1,0 +1,57 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 48: Community Training Day</title>
+</head>
+<body>
+ <h1>48: Community Training Day</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 6 cmds<br />
+   Speed: 8 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 6 cmds<br />
+   Speed: 6 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 6 cmds<br />
+   Speed: 5 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| if N != "a wall"
+   02|| listen "Go!"
+   03| takeFrom S
+   04| "mem 1" = nearest "shredder"
+   05| giveTo "mem 1"
+   06| tell "everyone" "Go!"
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = nearest "shredder"
+   02| if N == "a wall"
+   03|| takeFrom S
+   04|| giveTo "mem 1"
+   05|| tell "everyone" "Go!"
+   06| else
+   07|| takeFrom S
+   08|| listen "Go!"
+   09|| giveTo "mem 1"
+  </pre>
+  The solutions aren't difficult, but the speed solution is a little sneaky. Your workers don't have to wait for the full demonstration to start their task; they can take the datacube first and then listen.
+ </p>
+</body>
+</html>

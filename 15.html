@@ -1,0 +1,149 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 15: Shred Lines</title>
+</head>
+<body>
+ <h1>15: Shred Lines</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 9 cmds<br />
+   Speed: 23 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 12 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 12 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| step N
+   02| if N == "a datacube"
+   03|| pickUp N
+   **|| jmp02:
+   04|| step S
+   05|| if S != "a shredder"
+   06||| jump jmp02
+   07|| giveTo S
+   08| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if E != "a worker"
+   02|| step N
+   03|| step N
+   04|| pickUp N
+   05|| step S
+   06|| step S
+   07|| giveTo S
+   08|| step N
+   09|| step N
+   10|| step N
+   11|| step N
+   12|| pickUp N
+   13|| step S
+   14|| step S
+   15|| step S
+   16|| step S
+   17|| giveTo S
+   **|| jmp01:
+   18|| step N
+   19|| step N
+   20|| step N
+   21|| step N
+   22|| step N
+   23|| pickUp N
+   24|| step S
+   25|| step S
+   26|| step S
+   27|| step S
+   28|| step S
+   29|| giveTo S
+   30|| end
+   31| if W != "a worker"
+   32|| step N
+   33|| pickUp N
+   34|| step S
+   35|| giveTo S
+   36|| step N
+   37|| step N
+   38|| step N
+   39|| pickUp N
+   40|| step S
+   41|| step S
+   42|| step S
+   43|| giveTo S
+   **|| jmp02:
+   44|| step N
+   45|| step N
+   46|| step N
+   47|| step N
+   48|| pickUp N
+   49|| step S
+   50|| step S
+   51|| step S
+   52|| step S
+   53|| giveTo S
+   54|| end
+   55| if W != "a worker"
+   56|| step N
+   57|| step N
+   58|| pickUp N
+   59|| step S
+   60|| step S
+   61|| giveTo S
+   62|| step N
+   63|| step N
+   64|| step N
+   65|| pickUp N
+   66|| step S
+   67|| step S
+   68|| step S
+   69|| giveTo S
+   70|| jump jmp01
+   71| if W != "a worker"
+   72|| step N
+   73|| pickUp N
+   74|| step S
+   75|| giveTo S
+   76|| step N
+   77|| step N
+   78|| step N
+   79|| pickUp N
+   80|| step S
+   81|| step S
+   82|| step S
+   83|| giveTo S
+   84|| jump jmp01
+   85| step N
+   86| pickUp N
+   87| step S
+   88| giveTo S
+   89| step N
+   90| step N
+   91| pickUp N
+   92| step S
+   93| step S
+   94| giveTo S
+   95| jump jmp02
+  </pre>
+  The solutions are obvious.
+ </p>
+</body>
+</html>

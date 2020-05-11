@@ -1,0 +1,117 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 44: Unique Fashion Party</title>
+</head>
+<body>
+ <h1>44: Unique Fashion Party</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 11 cmds<br />
+   Speed: 75 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 6 cmds<br />
+   Speed: 22 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 6 cmds<br />
+   Speed: 22 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 1" = nearest "hole"
+   02| pickUp S
+   **| jmp01:
+   03| if SW == "my item" or
+   **|    W == "my item" or
+   **|    NW == "my item" or
+   **|    N == "my item"
+   04|| step "mem 1"
+   05| step NW, N, NE, S, SW, W
+   06| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if W == "a wall" or
+   **|    N == "a wall" or
+   **|    E == "a wall"
+   02|| "mem 1" = calc "0" / "0"
+   03| pickUp S
+   04| step E
+   05| step E
+   06| if E == "a wall"
+   07|| "mem 1" = calc "0" / "0"
+   **| jmp01:
+   08| if E == "my item" or
+   **|    SW == "my item" or
+   **|    S == "my item" or
+   **|    SE == "my item" or
+   **|    S == "a wall"
+   09|| if S == "a wall"
+   10||| jump jmp02
+   11|| step N
+   12|| step N
+   13|| step N
+   14|| step N
+   15|| "mem 1" = calc "0" / "0"
+   16| step E, SE, S, SW
+   17| jump jmp01
+   **| jmp02:
+   **| jmp03:
+   18| step E
+   19| if SE != "a hole"
+   20|| jump jmp03
+   21| if "my item" < "3"
+   22|| if "my item" == 0
+   23||| jump jmp04
+   24|| else
+   25||| if "my item" == 1
+   26|||| jump jmp05
+   27||| else
+   28|||| jump jmp06
+   29| else
+   30|| if "my item" < "5"
+   31||| if "my item" == "3"
+   32|||| jump jmp07
+   33||| else
+   34|||| jump jmp08
+   35|| else
+   36||| if "my item" == "5"
+   37|||| jump jmp09
+   38||| else
+   39|||| jump jmp10
+   **| jmp04
+   40| step E
+   **| jmp05
+   41| step E
+   **| jmp06
+   42| step E
+   **| jmp07
+   43| step E
+   **| jmp08
+   44| step E
+   **| jmp09
+   45| step E
+   **| jmp10
+   46| if NE == "nothing"
+   47|| step NE
+   48| else
+   49|| step SE
+  </pre>
+  All the solutions to this puzzle are "hacks." The size solution is so small you basically have no choice, but it is upgraded to a difficulty 2, since it's not guaranteed to succeed. Remove the E and SE options for a higher success rate, as it can fail if all of a certain number wander off into a hole. Although, this still does not guarantee success because there are some pathing issues that can trigger all of a certain number to rush into a hole. The speed solution will work with 100% accuracy if the first two self-destruct "if" statements are removed, but the average speed becomes about 27 secs. This is the fastest solution I know with 100% accuracy. There is an incredibly "hacky" solution that has an average speed of 1 secs. I did not come up with this solution, however, so I did not include it, but be aware it exists.
+ </p>
+</body>
+</html>

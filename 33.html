@@ -1,0 +1,59 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 33: Data Backup Day</title>
+</head>
+<body>
+ <h1>33: Data Backup Day</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 8 cmds<br />
+   Speed: 3 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 2 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 2 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 1" = set W
+   02| "mem 2" = set E
+   03| if "mem 2" < "mem 1"
+   04|| "mem 1" = set "mem 2"
+   05|| "mem 2" = set W
+   06| pickUp "mem 2"
+   07| write "mem 1"
+   08| drop
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if W < E
+   02|| "mem 1" = set W
+   03|| step E
+   04| else
+   05|| "mem 1" = set E
+   06|| step W
+   07| pickUp H
+   08| write "mem 1"
+   09| drop
+  </pre>
+  The solutions are clear.
+ </p>
+</body>
+</html>

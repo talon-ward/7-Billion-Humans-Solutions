@@ -1,0 +1,119 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 31: Checkerboard Organization</title>
+</head>
+<body>
+ <h1>31: Checkerboard Organization</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 7 cmds<br />
+   Speed: 100 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 7 cmds<br />
+   Speed: 58 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 7 cmds<br />
+   Speed: 50 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 1" = nearest "printer"
+   **| jmp01:
+   02| if H == "nothing"
+   03|| drop
+   04|| takeFrom "mem 1"
+   05|| step E
+   06| step NW, NE, SE, SW
+   07| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = nearest "printer"
+   02| if S == "a wall"
+   03|| takeFrom "mem 1"
+   04|| step SW
+   05|| step SW
+   06|| step SW
+   07|| step S
+   08|| drop
+   09|| "mem 2" = nearest "datacube"
+   10|| takeFrom "mem 1"
+   11|| step "mem 2"
+   12|| step NW
+   13|| drop
+   14|| "mem 2" = nearest "datacube"
+   15|| takeFrom "mem 1"
+   16|| step "mem 2"
+   17|| step NE
+   18|| step NW
+   **|| jmp01:
+   **|| jmp02:
+   **|| jmp03:
+   **|| jmp04:
+   **|| jmp05:
+   **|| jmp06:
+   19|| drop
+   20|| "mem 2" = nearest "datacube"
+   21|| takeFrom "mem 1"
+   22|| step "mem 2"
+   23|| step SE
+   24|| jump jmp06
+   25| if NE == "a printer"
+   26|| takeFrom "mem 1"
+   27|| step W
+   28|| step W
+   29|| step W
+   30|| step NW
+   31|| jump jmp05
+   32| if SW == "a datacube"
+   33|| takeFrom "mem 1"
+   34|| step N
+   35|| step NW
+   36|| jump jmp04
+   37| if SE == "a hole"
+   38|| takeFrom "mem 1"
+   39|| step SE
+   40|| step SE
+   41|| step S
+   42|| jump jmp03
+   43| step E
+   44| if E == "a hole"
+   45|| takeFrom "mem 1"
+   46|| step NE
+   47|| step NE
+   48|| step E
+   49|| drop
+   50|| "mem 2" = nearest "datacube"
+   51|| takeFrom "mem 1"
+   52|| step "mem 2"
+   53|| step SE
+   54|| drop
+   55|| takeFrom "mem 1"
+   56|| step NE
+   57|| step N
+   58|| jump jmp02
+   59| takeFrom "mem 1"
+   60| step NW
+   61| step NW
+   62| step W
+   63| jump jmp01
+  </pre>
+  This level is very similar to the previous level, except that movement is restricted to diagonals. Again, the size solution is so small as to be immediate, and the speed solution is based on isolating specific workers and giving them a region to fill.
+ </p>
+</body>
+</html>

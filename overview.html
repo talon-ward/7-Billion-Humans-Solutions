@@ -1,0 +1,55 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - Overview</title>
+</head>
+<body>
+ <h1>Overview</h1>
+ <ul>
+  <li><a href="overview.html#introduction">Introduction</a></li>
+  <li><a href="overview.html#lines">Line Count</a></li>
+  <li><a href="overview.html#speed">Speed</a></li>
+  <li><a href="overview.html#difficulty">Difficulty Ratings</a></li>
+ </ul>
+ <p><a href="index.html">Table of Contents</a></p>
+ <div id="introduction">
+  <h3>Introduction</h3>
+  <p>7 Billion Humans is a game I greatly enjoyed. On my first playthrough, my goal was to complete the OCD challenges for each floor. On my second playthrough, my goal was to meet or exceed the best known solutions for speed or line count. Some of these were quite frustrating, and the game mechanics are not always described. I am creating this guide to give comprehensive solutions and explanations for the puzzles in this game as well as clarification on certain game mechanics.</p>
+  <p>I use my own notation to describe programs, which should be fairly obvious: relative locations are described as NW, N, NE, E, SE, S, SW, W for the adjacent squares in clockwise order starting with the top left square. The symbol H represents the word "here," and stands for the current (center) location. Lines that do not count toward the optimization line count are listed as "**" and otherwise numbered. Indentation is represented by "|" symbols. Jump locations are identified with a terminal ":" and referred to without the colon.</p>
+  <p>I do not guarantee that the solutions here are optimal (or that these transliterations are free from typos). My goal was to meet the number given in the game as the best known size or speed at release. When optimizing speed, I give no consideration to size and vice versa. All of the programs here are my own work, sometimes after many, many painstaking hours of trial and error. In at least one case, I know of a better solution that was not my own and have not included it here for this reason.
+ </div>
+ <div id="lines">
+  <h3>Line Count</h3>
+  Line count is fairly straightforward; however, there are a few rules that aren't explicitly stated. While the game clearly displays the number of lines for optimization, there is a limit to the number of lines that is not clearly explained. This limit becomes a meaningful constraint in some speed optimization problems.
+  <ul>
+   <li>There is a maximum line count of 255 lines.</li>
+   <li>An "if" statement always counts as two lines, in addition to any lines contained within it.</li>
+   <li>A jump statement always counts as two lines.</li>
+   <li>A "foreachdir" command only counts as one line, in addition to any lines contained within it.</li>
+  </ul>
+  <p>The "if" statement could be better described as an "if/else" statment, as the "else" component is always present for the maximum line count limit, even if no commands are in that section. You can verify this fact my moving a command from the "if" section to the "else" section while at the line limit. Additionally, extra conditionals added to an "if" statement do <emph>not</emph> affect the line count for the maximum limit.</p>
+ </div>
+ <div id="speed">
+  <h3>Speed</h3>
+  Speed in this game is very mysterious and requires extensive testing.
+  <ul>
+   <li>Observing squares induces an extra penalty.</li>
+   <li>The "calc" command is incredibly slow.</li>
+   <li>The "nearest" and "foreachdir" commands are incredibly fast.</li>
+   <li>The "foreachdir" command scans in a fixed order: NW, N, NE, E, SE, S, SW, W</li>
+   <li>The "nearest" command breaks ties in a fixed order: N, W, E, S, and NW, NE, SW, SE
+  </ul>
+  <p>Any operation that involves selecting a square from the local neighborhood (e.g., an "if" or "set" command) will incur an extra time penalty if it does so. For example, setting "mem 1" to the literal value "1" is very fast, but setting "mem 1" to the value of the square your worker is standing on is slower. If multiple squares are checked from the same command (e.g., in different conditionals for a single "if" statement), then the speed penalty is incurred only once, regardless of the number of different squares checked.</p>
+  <p>The calc command is the slowest command in the game. This is incredibly incovenient, and many speed optimizations involve simply expanding what would be just adding to a memory location to instead be a binary tree of "if" and "set" commands. This is, in my personal opinion, the most obnoxious feature in the game.</p>
+  <p>Since environmental checks incur an additional speed penalty, many optimizations involve removing these checks from inner loops. If your worker is standing on a square containing a datacube, then the nearest command will always set the memory location to that datacube, which is much faster than setting the memory location to your current position. The "foreachdir" command, like the "nearest" command, also avoids the environmental check penalty. Knowing the scanning order can allow you to observe adjacent squares quickly.</p>
+ </div>
+ <div id="difficulty">
+  <h3>Difficulty Ratings</h3>
+  Each level has a difficulty rating for each optimization. This is a number 1, 2, or 3 that I have assigned based on my personal opinion of the content of this level, and may be more indicative of how "interesting" the level is.
+  <ul>
+   <li>(1) - This is a very straightforward optimization. For line count, it is probably very short and easy to search for. For speed, it probably involves nothing more than basic loop unrolling or identifying specific workers and manually writing out exactly what they should do.</li>
+   <li>(2) - This is a moderately challenging optimization. There is a trick or lesson to be learned, but it's not too difficult to figure out.</li>
+   <li>(3) - This is a difficult optimization. There is some devious, sneaky solution that is not at all obvious to figure out. In fact, the solution might be considered a "hack" that doesn't even always work (as long as you can get it to run on a sample and then have it succeed on at least 50% of 25 random samples, it counts).</li>
+  </ul>
+ </div>
+</body>
+</html>

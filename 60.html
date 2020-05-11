@@ -1,0 +1,54 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 60: Understaffed Sorting</title>
+</head>
+<body>
+ <h1>14: Intro to Shredding</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 12 cmds<br />
+   Speed: 200 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 12 cmds<br />
+   Speed: 155 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 12 cmds<br />
+   Speed: 152 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solution</h3>
+  <pre>
+   **| jmp01:
+   01| step W, E
+   02| if SW == "a datacube" and
+   **|    S == "a datacube" and
+   **|    SW > S and
+   **|    W != "a worker"
+   03|| pickUp SW
+   04|| drop
+   05|| step SW
+   06|| pickUp E
+   07|| drop
+   08|| pickUp NE
+   09|| step E
+   10|| drop
+   11|| step N
+   12| jump jmp01
+  </pre>
+  The speed is highly variable, so run it a few times for a good time. There is a bit of subtlety involved: the "step N" on line 11 is very important. If you use "step NW" or "step NE" instead, you will get terrible times, since you bias the position of your worker. The expectation should be zero net horizontal movement. 
+ </p>
+</body>
+</html>

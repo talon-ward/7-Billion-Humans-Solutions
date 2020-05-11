@@ -1,0 +1,70 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 6: Little Exterminator 1</title>
+</head>
+<body>
+ <h1>6: Little Exterminator 1</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 9 cmds<br />
+   Speed: 4 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 3 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 3 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if S == "nothing" or
+   **|    S == "a datacube"
+   02|| step S
+   03| if E == "a hole" or
+   **|    NE == "nothing" and
+   **|    W == "nothing" and
+   **|    S != "nothing" and
+   **|    S != "a wall"
+   04|| step W
+   05| if W == "a hole" or
+   **|    NW == "nothing" or
+   **|    SW == "a hole" and
+   **|    E == "nothing" and
+   **|    S != "nothing" and
+   **|    S != "a wall"
+   06|| step E
+   07| pickUp
+   08| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step S
+   02| step SW
+   03| step SW
+   04| step SE
+   05| step E
+   06| step SE
+   07| step S
+   08| step S
+   09| pickUp
+  </pre>
+  The speed solution is obviously just telling the worker where to go. The size solution comes from the realization that only three movement commands are necessary and figuring out how to differentiate between the three different cases using a single "if" statement, which is restricted by a maximum of 8 conditionals that are left associative.
+ </p>
+</body>
+</html>

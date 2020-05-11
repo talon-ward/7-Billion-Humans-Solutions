@@ -1,0 +1,97 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 41: Image Decrypter</title>
+</head>
+<body>
+ <h1>41: Image Decrypter</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 8 cmds<br />
+   Speed: 15 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 8 cmds<br />
+   Speed: 7 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 8 cmds<br />
+   Speed: 7 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp W
+   **| jmp01:
+   02| step W
+   03| "mem 1" = calc "mem 1" + "1"
+   04| if "mem 1" <= "my item"
+   05|| jump jmp01
+   06| drop
+   07| "mem 1" = nearest "hole"
+   08| step "mem 1"
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| step W
+   02| step W
+   03| pickUp E
+   04| if "my item" == "12"
+   05|| jump jmp01
+   06| if "my item" == "11"
+   07|| jump jmp02
+   08| if "my item" == "10"
+   09|| jump jmp03
+   10| if "my item" == "9"
+   11|| jump jmp04
+   12| if "my item" == "7"
+   13|| jump jmp05
+   14| if "my item" == "6"
+   15|| jump jmp06
+   16| if "my item" == "5"
+   17|| jump jmp07
+   18| if "my item" == "4"
+   19|| jump jmp08
+   20| if "my item" == "3"
+   21|| jump jmp09
+   22| if "my item" == "1"
+   23|| jump jmp10
+   **| jmp01:
+   24| step W
+   **| jmp02:
+   25| step W
+   **| jmp03:
+   26| step W
+   **| jmp04:
+   27| step W
+   28| step W
+   **| jmp05:
+   29| step W
+   **| jmp06:
+   30| step W
+   **| jmp07:
+   31| step W
+   **| jmp08:
+   32| step W
+   **| jmp09:
+   33| step W
+   34| step W
+   **| jmp10:
+   35| step W
+   36| "mem 1" = calc "1" / "0"
+  </pre>
+  The size solution is just straightforward counting. The speed solution is incredibly deceptive, however, since the directions specifically state that "all workers must then exit the room by stepping into one of the conveniently placed infinite pit holes." In fact, they just need to exit the room, not necessarily through a hole. This can be accomplished by dividing by zero, which causes a worker to self-destruct.
+ </p>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 16: Little Exterminator 2</title>
+</head>
+<body>
+ <h1>16: Little Exterminator 2</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 1
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 8 cmds<br />
+   Speed: 9 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 6 cmds<br />
+   Speed: 7 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 6 cmds<br />
+   Speed: 7 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if S == "a wall" or
+   **|    S == "a hole" or
+   **|    SW == "a hole" or
+   **|    SE == "a shredder" or
+   **|    S == "a shredder" or
+   **|    SW == "a shredder"
+   02|| step NE
+   03| step S
+   04| giveTo S
+   05| pickUp H
+   06| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if SW != "a worker"
+   02|| step S
+   03|| step S
+   04|| step S
+   05|| pickUp S
+   06|| step SE
+   07|| jump jmp02
+   08| if SW != "a worker"
+   09|| step S
+   10|| step S
+   11|| step S
+   12|| step S
+   13|| pickUp S
+   14|| step SE
+   15|| step E
+   16|| jump jmp01
+   17| step S
+   18| step S
+   19| step S
+   20| step S
+   21| step S
+   22| pickUp S
+   23| step SE
+   24| step E
+   25| step E
+   **| jmp01:
+   **| jmp02:
+   26| step E
+   27| step E
+   28| giveTo SE
+  </pre>
+  The speed solution is basic. The size solution undoes the downward step each iteration by stepping NE once a cube is picked up, converting to net horizontal movement. The "if" statement could be much less complicated if we were yet allowed to refer to "my item."
+ </p>
+</body>
+</html>

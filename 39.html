@@ -1,0 +1,100 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 39: Printing Etiquette 1</title>
+</head>
+<body>
+ <h1>39: Printing Etiquette 1</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 9 cmds<br />
+   Speed: 55 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 7 cmds<br />
+   Speed: 39 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 7 cmds<br />
+   Speed: 39 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| "mem 1" = nearest "printer"
+   02| step NW, N, NE, E, SE, S, SW, W
+   03| drop
+   04| if "mem 2" < "5" and
+   **|    "my item" == "nothing"
+   05|| takeFrom "mem 1"
+   06|| "mem 2" = calc "mem 2" + "1"
+   07| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 1" = nearest "printer"
+   02| if SE == "a worker"
+   03|| takeFrom "mem 1"
+   04|| step NE
+   **|| jmp01:
+   05|| step NE
+   **|| jmp02:
+   06|| step N
+   07|| step N
+   08|| jump jmp04
+   09| if NW == "a worker"
+   10|| takeFrom "mem 1"
+   11|| jump jmp01
+   12| if SW == "a worker"
+   13|| takeFrom "mem 1"
+   14|| jump jmp02
+   15| step S
+   16| step S
+   17| if S == "a wall"
+   18|| takeFrom "mem 1"
+   19|| step NE
+   20|| jump jmp03
+   21| takeFrom "mem 1"
+   22| step E
+   **| jmp03:
+   23| step E
+   **| jmp04:
+   24| drop
+   25| "mem 2" = nearest "datacube"
+   26| takeFrom "mem 1"
+   27| step "mem 2"
+   28| step W
+   29| drop
+   30| "mem 2" = nearest "datacube"
+   31| takeFrom "mem 1"
+   32| step "mem 2"
+   33| step W
+   34| drop
+   35| "mem 2" = nearest "datacube"
+   36| takeFrom "mem 1"
+   37| step "mem 2"
+   38| step W
+   39| drop
+   40| "mem 2" = nearest "datacube"
+   41| takeFrom "mem 1"
+   42| step "mem 2"
+   43| step W
+   44| drop
+
+  </pre>
+  The size solution is just random movement with a counter. The speed solution is just worker isolation and loop unrolling.
+ </p>
+</body>
+</html>

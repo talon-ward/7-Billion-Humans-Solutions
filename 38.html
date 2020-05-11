@@ -1,0 +1,115 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 38: Seek and Destroy 3</title>
+</head>
+<body>
+ <h1>38: Seek and Destroy 3</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 22 cmds<br />
+   Speed: 33 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 17 cmds<br />
+   Speed: 11 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 16 cmds<br />
+   Speed: 11 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 2" = nearest "wall"
+   **| jmp01:
+   02| step N
+   03| if H < "mem 1" or
+   **|    "mem 1" != "a datacube"
+   04|| "mem 1" = set H
+   05| if N != "a wall"
+   06|| jump jmp01
+   07| pickUp "mem 1"
+   08| step "mem 2"
+   09| if E == "a hole"
+   10|| step NW
+   **|| jmp02:
+   11|| if S < "my item" or
+   **||    SW == "a shredder"
+   12||| giveTo SW
+   13||| drop
+   14||| takeFrom S
+   15|| step W
+   16|| jump
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if S == "a shredder"
+   02|| "mem 3" = nearest "shredder"
+   **|| jmp01:
+   03|| if SE != "a worker"
+   04||| jump jmp01
+   05|| step E
+   06|| "mem 1" = nearest "worker"
+   07|| step E
+   08|| "mem 2" = nearest "worker"
+   09|| if "mem 2" < "mem 1"
+   10||| "mem 1" = set "mem 2"
+   11|| takeFrom "mem 1"
+   12|| giveTo "mem 3"
+   13| "mem 3" = nearest "wall"
+   14| step N
+   15| step N
+   16| "mem 2" = nearest "datacube"
+   17| step N
+   18| "mem 1" = nearest "datacube"
+   19| if "mem 1" < "mem 2"
+   20|| "mem 2" = set "mem 1"
+   21| step N
+   22| "mem 1" = nearest "datacube"
+   23| if "mem 1" < "mem 2"
+   24|| "mem2" = set "mem 1"
+   25| step N
+   26| "mem 1" = nearest "datacube"
+   27| if "mem 1" < "mem 2"
+   28|| "mem2" = set "mem 1"
+   29| step N
+   30| "mem 1" = nearest "datacube"
+   31| if "mem 1" < "mem 2"
+   32|| "mem2" = set "mem 1"
+   33| step N
+   34| "mem 1" = nearest "datacube"
+   35| if "mem 1" < "mem 2"
+   36|| "mem2" = set "mem 1"
+   37| step N
+   38| "mem 1" = nearest "datacube"
+   39| if "mem 1" < "mem 2"
+   40|| "mem2" = set "mem 1"
+   41| step N
+   42| "mem 1" = nearest "datacube"
+   43| if "mem 1" < "mem 2"
+   44|| "mem2" = set "mem 1"
+   45| pickUp "mem 2"
+   46| step "mem 3"
+   47| "mem 2" = nearest "worker"
+   48| step W
+   49| if "mem 2" < "my item"
+   **|| jmp02:
+   50|| step E
+   51|| jump jmp02
+  </pre>
+  The size solution is just a little tricky but follows from pretty standard optimizations once you get the right setup. The speed solution, however, is a complete hack. It requires numerous failed attemps and lucky test data to get at least 50% right at 11 secs (the speed is always 11, but there is a high probability of failure). A guaranteed solution based on the same setup as the size solution with various and inventive optimizations can complete in 14 secs.
+ </p>
+</body>
+</html>

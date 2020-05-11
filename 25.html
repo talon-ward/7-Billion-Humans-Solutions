@@ -1,0 +1,58 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 25: My First Shredding Memory</title>
+</head>
+<body>
+ <h1>25: My First Shredding Memory</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 5 cmds<br />
+   Speed: 132 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 5 cmds<br />
+   Speed: 131 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 5 cmds<br />
+   Speed: 131 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| "mem 2" = nearest "shredder"
+   **| jmp01:
+   02| "mem 1" = nearest "datacube"
+   03| pickUp "mem 1"
+   04| giveTo "mem 2"
+   05| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| "mem 2" = nearest "shredder"
+   **| jmp01:
+   02| "mem 1" = nearest "datacube"
+   03| if "mem 1" == "nothing"
+   04|| end
+   05| pickUp "mem 1"
+   06| if "my item" == "nothing"
+   07|| end
+   08| giveTo "mem 2"
+   09| jump jmp01
+  </pre>
+  The size solution is obvious, but the speed solution may not be immediately clear. Both checks are required in order to get the optimal speed. There may not be any datacubes left on the map, so "mem 1" needs to be tested to prevent the worker from wasting time failing to pick up a datacube while blocking the shredder, and there may not be any datacubes left after your worker has already started their journey to try to pick up the nearest one, so we must test to see that the worker actually picked one up to ensure they don't throw themselves into the shredder, wasting even more valuable shredding time.
+ </p>
+</body>
+</html>

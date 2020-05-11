@@ -1,0 +1,102 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 61: Lazy Pathways</title>
+</head>
+<body>
+ <h1>61: Lazy Pathways</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 11 cmds<br />
+   Speed: 250 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 7 cmds<br />
+   Speed: 73 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 7 cmds<br />
+   Speed: 61 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| "mem 1" = calc H + "1"
+   02| step NW, N, NE, E, SE, S, SW, W
+   03| if "mem 1" < H and
+   **|    "mem 1" > "1"
+   04|| pickUp H
+   05|| write "mem 1"
+   06|| drop
+   07| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   **| jmp01:
+   **| jmp02:
+   01| step NW, N, S, SW, W
+   02| "mem 1" = nearest "datacube"
+   **| jmp03:
+   03| if "mem 1" < "2" or
+   **|    "mem 1" != "a datacube"
+   04|| jump jmp02
+   05| step "mem 1"
+   06| "mem 4" = set "0"
+   07| "mem 3" = set "99"
+   08| forEachDir NW, N, NE, E, SE, S, SW, W as "mem 2"
+   09|| if "mem 2" < "mem 3" and
+   **||    "mem 2" == "a datacube"
+   10||| "mem 3" = set "mem 2"
+   11|| if "mem 2" > "mem 4"
+   12||| "mem 4" = set "mem 2"
+   13| if "mem 3" < "8"
+   14|| if "mem 3" < "4"
+   15||| if "mem 3" < "2"
+   16|||| "mem 3" = set "2"
+   17||| else
+   18|||| if "mem 3" == "2"
+   19||||| "mem 3" = set "3"
+   20|||| else
+   21||||| "mem 3" = set "4"
+   22|| else
+   23||| if "mem 3" < "6"
+   24|||| if "mem 3" == "4"
+   25||||| "mem 3" = set "5"
+   26|||| else
+   27||||| "mem 3" = set "6"
+   28||| else
+   29|||| if "mem 3" == "6"
+   30||||| "mem 3" = set "7"
+   31|||| else
+   32||||| "mem 3" = set "8"
+   33| else
+   34|| if "mem 3" < "12"
+   35||| if "mem 3" < "10"
+   36|||| if "mem 3" == "8"
+   37||||| "mem 3" = set "9"
+   38|||| else
+   39||||| "mem 3" = set "10"
+   40| if "mem 3" < "mem 1"
+   41|| pickUp H
+   42|| write "mem 3"
+   43|| drop
+   44|| "mem 1" = set "mem 4"
+   45|| jump jmp03
+   46| jump jmp01
+  </pre>
+  The size solution is the obvious choice. The speed solution is a "hack" because sometimes the workers miss a datacube, but that's pretty rare. In addition to the obvious optimizations, such as replacing the "calc" command with a binary tree, the main benefit comes from biasing the random "step" command. By preventing the workers from stepping right at all, they quickly traverse the field. Storing the largest adjacent datacube is a quick way to reduce the chances that a datacube gets missed; if you had to write over a datacube, then step to the largest adjacent one instead of stepping randomly. The speed is variable, so give it a few runs for a good time.
+ </p>
+</body>
+</html>

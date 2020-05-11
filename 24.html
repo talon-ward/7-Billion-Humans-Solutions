@@ -1,0 +1,66 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 24: Budget Brigade 1</title>
+</head>
+<body>
+ <h1>24: Budget Brigade 1</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 2<br />
+  Speed: 3
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 7 cmds<br />
+   Speed: 50 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 6 cmds<br />
+   Speed: 47 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 6 cmds<br />
+   Speed: 47 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| if S != "a shredder"
+   02|| takeFrom S
+   03| giveTo E
+   04| if "my item" == "a datacube" and
+   **|    S == "a shredder"
+   05| giveTo S
+   06| jump jmp01
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| if S == "a printer"
+   **|| jmp01:
+   02|| if "my item" == "nothing"
+   03||| takeFrom S
+   04|| jump jmp01
+   05| if E == "a worker"
+   **|| jmp02:
+   06|| if "my item" == "nothing"
+   07||| takeFrom W
+   08|| jump jmp02
+   **| jmp03:
+   09| if "my item" == "nothing"
+   10|| takeFrom W
+   11| else
+   12|| giveTo S
+   13| jump jmp03
+  </pre>
+  The size solution follows the basic pattern of taking the operations you need and wrapping them in the appropriate conditions. The speed solution is insidiously tricky as it relies on a subtle and secret distinction between the "giveTo" and "takeFrom" commands. Changes that seem like they should have no effect on execution speed can actually make a difference.
+ </p>
+</body>
+</html>

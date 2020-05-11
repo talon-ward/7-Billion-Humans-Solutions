@@ -1,0 +1,280 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 43: Multiplication Table</title>
+</head>
+<body>
+ <h1>43: Multiplication Table</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 11 cmds<br />
+   Speed: 53 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 10 cmds<br />
+   Speed: 31 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 10 cmds<br />
+   Speed: 26 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   **| jmp01:
+   01| step N
+   02| if N != "a wall"
+   03|| jump jmp01
+   04| "mem 2" = set H
+   **| jmp02:
+   05| step S
+   06| pickUp H
+   07| write "mem 1"
+   08| drop
+   09| "mem 1" = calc "mem 1" + "mem 2"
+   10| jump jmp02
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   **| jmp01:
+   01| step N
+   02| "mem 1" = nearest "datacube"
+   03| if "mem 1" == "0"
+   04|| jump jmp01
+   05| "mem 2" = set "mem 1"
+   **| jmp02:
+   06| step S
+   07| pickUp H
+   08| write "mem 1"
+   09| drop
+   10| if "mem 2" < "5"
+   11|| if "mem 2" < "3"
+   12||| if "mem 2" == "1"
+   13|||| if "mem 1" < "5"
+   14||||| if "mem 1" < "3"
+   15|||||| if "mem 1" == "1"
+   16||||||| "mem 1" = set "2"
+   17|||||| else
+   18||||||| "mem 1" = set "3"
+   19||||| else
+   20|||||| if "mem 1" == "3"
+   21||||||| "mem 1" = set "4"
+   22|||||| else
+   23||||||| "mem 1" = set "5"
+   24|||| else
+   25||||| if "mem 1" < "7"
+   26|||||| if "mem 1" == "5"
+   27||||||| "mem 1" = set "6"
+   28|||||| else
+   29||||||| "mem 1" = set "7"
+   30||||| else
+   31|||||| if "mem 1" == "7"
+   32||||||| "mem 1" = set "8"
+   33|||||| else
+   34||||||| "mem 1" = set "9"
+   35||| else
+   36|||| if "mem 1" < "10"
+   37||||| if "mem 1" < "6"
+   38|||||| if "mem 1" == "2"
+   39||||||| "mem 1" = set "4"
+   40|||||| else
+   41||||||| "mem 1" = set "6"
+   42||||| else
+   43|||||| if "mem 1" == "6"
+   44||||||| "mem 1" = set "8"
+   45|||||| else
+   46||||||| "mem 1" = set "10"
+   47|||| else
+   48||||| if "mem 1" < "14"
+   49|||||| if "mem 1" == "10"
+   50||||||| "mem 1" = set "12"
+   51|||||| else
+   52||||||| "mem 1" = set "14"
+   53||||| else
+   54|||||| if "mem 1" == "14"
+   55||||||| "mem 1" = set "16"
+   56|||||| else
+   57||||||| "mem 1" = set "18"
+   58|| else
+   59||| if "mem 2" == "3"
+   60|||| if "mem 1" < "15"
+   61||||| if "mem 1" < "9"
+   62|||||| if "mem 1" == "3"
+   63||||||| "mem 1" = set "6"
+   64|||||| else
+   65||||||| "mem 1" = set "9"
+   66||||| else
+   67|||||| if "mem 1" == "9"
+   68||||||| "mem 1" = set "12"
+   69|||||| else
+   70||||||| "mem 1" = set "15"
+   71|||| else
+   72||||| if "mem 1" < "21"
+   73|||||| if "mem 1" == "15"
+   74||||||| "mem 1" = set "18"
+   75|||||| else
+   76||||||| "mem 1" = set "21"
+   77||||| else
+   78|||||| if "mem 1" == "21"
+   79||||||| "mem 1" = set "24"
+   80|||||| else
+   81||||||| "mem 1" = set "27"
+   82||| else
+   83|||| if "mem 1" < "20"
+   84||||| if "mem 1" < "12"
+   85|||||| if "mem 1" == "4"
+   86||||||| "mem 1" = set "8"
+   87|||||| else
+   88||||||| "mem 1" = set "12"
+   89||||| else
+   90|||||| if "mem 1" == "12"
+   91||||||| "mem 1" = set "16"
+   92|||||| else
+   93||||||| "mem 1" = set "20"
+   94|||| else
+   95||||| if "mem 1" < "28"
+   96|||||| if "mem 1" == "20"
+   97||||||| "mem 1" = set "24"
+   98|||||| else
+   99||||||| "mem 1" = set "28"
+  100||||| else
+  101|||||| if "mem 1" == "28"
+  102||||||| "mem 1" = set "32"
+  103|||||| else
+  104||||||| "mem 1" = set "36"
+  105| else
+  106|| if "mem 2" < "7"
+  107||| if "mem 2" == "5"
+  108|||| if "mem 1" < "25"
+  109||||| if "mem 1" < "15"
+  110|||||| if "mem 1" == "5"
+  111||||||| "mem 1" = set "10"
+  112|||||| else
+  113||||||| "mem 1" = set "15"
+  114||||| else
+  115|||||| if "mem 1" == "15"
+  116||||||| "mem 1" = set "20"
+  117|||||| else
+  118||||||| "mem 1" = set "25"
+  119|||| else
+  120||||| if "mem 1" < "35"
+  121|||||| if "mem 1" == "25"
+  122||||||| "mem 1" = set "30"
+  123|||||| else
+  124||||||| "mem 1" = set "35"
+  125||||| else
+  126|||||| if "mem 1" == "35"
+  127||||||| "mem 1" = set "40"
+  128|||||| else
+  129||||||| "mem 1" = set "45"
+  130||| else
+  131|||| if "mem 1" < "30"
+  132||||| if "mem 1" < "18"
+  133|||||| if "mem 1" == "6"
+  134||||||| "mem 1" = set "12"
+  135|||||| else
+  136||||||| "mem 1" = set "18"
+  137||||| else
+  138|||||| if "mem 1" == "18"
+  139||||||| "mem 1" = set "24"
+  140|||||| else
+  141||||||| "mem 1" = set "30"
+  142|||| else
+  143||||| if "mem 1" < "42"
+  144|||||| if "mem 1" == "30"
+  145||||||| "mem 1" = set "36"
+  146|||||| else
+  147||||||| "mem 1" = set "42"
+  148||||| else
+  149|||||| if "mem 1" == "42"
+  150||||||| "mem 1" = set "48"
+  151|||||| else
+  152||||||| "mem 1" = set "54"
+  153|| else
+  154||| if "mem 2" == "7"
+  155|||| if "mem 1" < "35"
+  156||||| if "mem 1" < "21"
+  157|||||| if "mem 1" == "7"
+  158||||||| "mem 1" = set "14"
+  159|||||| else
+  160||||||| "mem 1" = set "21"
+  161||||| else
+  162|||||| if "mem 1" == "21"
+  163||||||| "mem 1" = set "28"
+  164|||||| else
+  165||||||| "mem 1" = set "35"
+  166|||| else
+  167||||| if "mem 1" < "49"
+  168|||||| if "mem 1" == "35"
+  169||||||| "mem 1" = set "42"
+  170|||||| else
+  171||||||| "mem 1" = set "49"
+  172||||| else
+  173|||||| if "mem 1" == "49"
+  174||||||| "mem 1" = set "56"
+  175|||||| else
+  176||||||| "mem 1" = set "63"
+  177||| else
+  178|||| if "mem 2" == "8"
+  179||||| if "mem 1" < "40"
+  180|||||| if "mem 1" < "24"
+  181||||||| if "mem 1" == "8"
+  182|||||||| "mem 1" = set "16"
+  183||||||| else
+  184|||||||| "mem 1" = set "24"
+  185|||||| else
+  186||||||| if "mem 1" == "24"
+  187|||||||| "mem 1" = set "32"
+  188||||||| else
+  189|||||||| "mem 1" = set "40"
+  190||||| else
+  191|||||| if "mem 1" < "56"
+  192||||||| if "mem 1" == "40"
+  193|||||||| "mem 1" = set "48"
+  194||||||| else
+  195|||||||| "mem 1" = set "56"
+  196|||||| else
+  197||||||| if "mem 1" == "56"
+  198|||||||| "mem 1" = set "64"
+  199||||||| else
+  200|||||||| "mem 1" = set "72"
+  201|||| else
+  202||||| if "mem 1" < "45"
+  203|||||| if "mem 1" < "27"
+  204||||||| if "mem 1" == "9"
+  205|||||||| "mem 1" = set "18"
+  206||||||| else
+  207|||||||| "mem 1" = set "27"
+  208|||||| else
+  209||||||| if "mem 1" == "27"
+  210|||||||| "mem 1" = set "36"
+  211||||||| else
+  212|||||||| "mem 1" = set "45"
+  213||||| else
+  214|||||| if "mem 1" < "63"
+  215||||||| if "mem 1" == "45"
+  216|||||||| "mem 1" = set "54"
+  217||||||| else
+  218|||||||| "mem 1" = set "63"
+  219|||||| else
+  220||||||| if "mem 1" == "63"
+  221|||||||| "mem 1" = set "72"
+  222||||||| else
+  223|||||||| "mem 1" = set "81"
+  224| jump jmp02
+  </pre>
+  The solutions aren't particularly difficult. The hardest part is mustering up the courage to enter in the massive binary search tree for the speed challenge, especially with their UI, which becomes unbearably clumsy for long programs, with endless, slow scrolling. The speed solution is nearly at the maximum program length, and the maximum nesting depth of the "if" statements is reached.
+ </p>
+</body>
+</html>

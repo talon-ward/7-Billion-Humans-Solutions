@@ -1,0 +1,113 @@
+<html>
+<head>
+ <title>7 Billion Humans Guide - 20: Reverse Line</title>
+</head>
+<body>
+ <h1>20: Reverse Line</h1>
+ <p><a href="index.html">Table of Contents</a></p>
+ <p>
+  <h3>Difficulty Ratings</h3>
+  Size: 1<br />
+  Speed: 2
+ </p>
+ <p>
+  <h3>Optimizations</h3>
+  <p>
+   <h4>OCD Challenges</h4>
+   Size: 9 cmds<br />
+   Speed: 11 secs
+  </p>
+  <p>
+   <h4>Optimal at Time of Release</h4>
+   Size: 9 cmds<br />
+   Speed: 4 secs
+  </p>
+  <p>
+   <h4>Personal Best</h4>
+   Size: 9 cmds<br />
+   Speed: 4 secs
+  </p>
+ </p>
+ <p>
+  <h3>Solutions</h3>
+  <h4>Size</h4>
+  <pre>
+   01| pickUp S
+   **| jmp01:
+   02| if SW != "a hole"
+   03|| step W
+   04|| jump jmp01
+   05| step S
+   **| jmp02:
+   06| if E != "a hole" and
+   **|    E != "a datacube"
+   07|| step E
+   08|| jump jmp02
+   09| drop
+  </pre>
+  <h4>Speed</h4>
+  <pre>
+   01| pickUp S
+   02| if W != "a worker" or
+   **|    E != "a worker"
+   03|| step S
+   04|| if NE == "a worker"
+   05||| step SE
+   06||| step E
+   07||| step E
+   08||| step E
+   09||| step E
+   10||| step E
+   11||| step NE
+   12|| else
+   13||| step SW
+   14||| step W
+   15||| step W
+   16||| step W
+   17||| step W
+   18||| step W
+   19||| step NW
+   20|| drop
+   21|| end
+   22| if W != "a worker" or
+   **|    E != "a worker"
+   23|| step S
+   24|| if NE == "a worker"
+   25||| step E
+   26||| step E
+   27||| step E
+   28||| step E
+   29||| step E
+   30|| else
+   31||| step W
+   32||| step W
+   33||| step W
+   34||| step W
+   35||| step W
+   36|| drop
+   37|| end
+   38| if W != "a worker" and
+   **|    E != "a worker"
+   39|| step N
+   40|| if SE == "a worker"
+   41||| step E
+   42||| step E
+   43||| step SE
+   44|| else
+   45||| step W
+   46||| step W
+   47||| step SW
+   48|| step S
+   49|| drop
+   50|| end
+   51| if E == "a worker"
+   52|| step E
+   53| else
+   54|| step W
+   55| step S
+   56| drop
+  </pre>
+  The ideas for the optimizations are pretty basic, but fine-tuning the speed optimization to avoid bumping and other slow downs may take some trial and error.
+ </p>
+</body>
+</html>
